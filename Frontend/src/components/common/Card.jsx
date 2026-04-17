@@ -7,8 +7,11 @@ const Card = ({
   headerAction,
   footer,
   className = '', 
+  headerClassName = '',
+  bodyClassName = '',
   hoverable = false,
   noPadding = false,
+  compact = false,
   variant = 'default',
   ...props 
 }) => {
@@ -28,7 +31,7 @@ const Card = ({
       {...props}
     >
       {(title || subtitle || headerAction) && (
-        <div className="px-10 py-8 border-b border-gray-100/50 dark:border-white/5 flex items-center justify-between gap-4">
+        <div className={`px-10 ${compact ? 'py-4' : 'py-8'} border-b border-gray-100/50 dark:border-white/5 flex items-center justify-between gap-4 ${headerClassName}`}>
           <div>
             {title && <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight">{title}</h3>}
             {subtitle && <p className="text-xs font-semibold text-slate-500 dark:text-slate-500 mt-1 leading-relaxed uppercase tracking-widest">{subtitle}</p>}
@@ -41,7 +44,7 @@ const Card = ({
         </div>
       )}
 
-      <div className={`${noPadding ? '' : 'p-10'}`}>
+      <div className={`${noPadding ? '' : compact ? 'p-6' : 'p-10'} ${bodyClassName}`}>
         {children}
       </div>
 

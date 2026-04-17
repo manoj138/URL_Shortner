@@ -46,15 +46,20 @@ const Urlindex = () => {
     <div className="w-full">
       <Card 
         variant="premium"
-        className="overflow-visible relative !bg-white/95 dark:!bg-slate-950/90 !rounded-[4rem]"
-        title="Quick Shortener"
-        subtitle="Transform any long URL into a trackable short link instantly."
-        headerAction={
-          <div className="p-5 rounded-[2rem] bg-brand-600 text-white shadow-2xl shadow-brand-600/30 animate-glow">
-            <Zap size={28} fill="currentColor" />
-          </div>
-        }
+        compact
+        className="overflow-visible relative !bg-white/95 dark:!bg-slate-950/90 !rounded-[2.5rem]"
+        bodyClassName="!px-8 !py-6 md:!px-12 md:!py-8"
       >
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 animate-reveal">
+           <div className="space-y-1">
+              <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight">Quick Shortener</h3>
+              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Transform long links into trackable assets instantly</p>
+           </div>
+           <div className="hidden md:flex p-3 rounded-2xl bg-brand-600 text-white shadow-2xl shadow-brand-600/30 animate-glow">
+              <Zap size={20} fill="currentColor" />
+           </div>
+        </div>
+
         <div className="absolute -top-16 -right-16 w-32 h-32 bg-brand-500/10 blur-3xl rounded-full"></div>
         <div className="absolute -bottom-16 -left-16 w-32 h-32 bg-accent-500/10 blur-3xl rounded-full"></div>
 
@@ -69,7 +74,7 @@ const Urlindex = () => {
                 type="url"
                 onChange={inputHandler}
                 required
-                className="group-hover:border-indigo-500/50 transition-all text-base py-4 px-6 rounded-2xl bg-white dark:bg-slate-900 shadow-sm border-slate-200 dark:border-white/5"
+                className="group-hover:border-indigo-500/50 transition-all text-base px-6 rounded-xl bg-white dark:bg-slate-900 shadow-sm border-slate-200 dark:border-white/5 h-14"
               />
             </div>
             <Button 
@@ -78,29 +83,25 @@ const Urlindex = () => {
                 type="submit" 
                 loading={loading}
                 size="lg"
-                className="w-full md:w-48 shadow-lg shadow-brand-600/10 !rounded-2xl font-bold hover:scale-105 active:scale-95 transition-all"
+                className="w-full md:w-48 shadow-lg shadow-brand-600/10 !rounded-xl font-extrabold hover:scale-105 active:scale-95 transition-all h-14"
             >
-              Shorten Now
+              Shorten
             </Button>
           </div>
         </form>
 
         {shortUrl && (
-          <div className="mt-12 space-y-4 animate-reveal delay-100 font-sans">
-            <div className="flex items-center gap-2 mb-1 ml-2">
-                <Sparkles size={14} className="text-brand-500 animate-pulse" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Your shortened link is ready</span>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center justify-between p-6 bg-slate-50 dark:bg-slate-950/30 rounded-3xl border border-slate-200 dark:border-white/5 group shadow-sm hover:border-indigo-500/20 transition-all duration-500">
+          <div className="mt-8 pt-8 border-t border-slate-100 dark:border-white/5 space-y-4 animate-reveal delay-100 font-sans">
+            <div className="flex flex-col sm:flex-row items-center justify-between p-5 bg-slate-50 dark:bg-slate-950/30 rounded-2xl border border-slate-200 dark:border-white/5 group shadow-sm hover:border-indigo-500/20 transition-all duration-500">
               <div className="flex items-center gap-4 overflow-hidden w-full">
-                <div className="p-3 rounded-xl bg-white dark:bg-slate-900 text-brand-600 shadow-sm transition-transform group-hover:scale-110 group-hover:rotate-6">
-                  <Check size={20} strokeWidth={3} />
+                <div className="p-2.5 rounded-lg bg-white dark:bg-slate-900 text-brand-600 shadow-sm transition-transform group-hover:scale-110 group-hover:rotate-6">
+                  <Check size={18} strokeWidth={3} />
                 </div>
                 <a 
                   href={shortUrl} 
                   target="_blank" 
                   rel="noreferrer"
-                  className="text-xl font-bold text-slate-900 dark:text-slate-100 truncate hover:text-indigo-600 transition-all"
+                  className="text-lg font-bold text-slate-900 dark:text-slate-100 truncate hover:text-indigo-600 transition-all"
                 >
                   {shortUrl}
                 </a>
@@ -109,7 +110,7 @@ const Urlindex = () => {
                 variant={copied ? "success" : "secondary"}
                 icon={copied ? Check : Copy}
                 onClick={copyToClipboard}
-                className="rounded-xl mt-4 sm:mt-0 ml-0 sm:ml-6 min-w-[140px] shadow-sm transform active:scale-95 transition-all text-sm py-3"
+                className="rounded-lg mt-4 sm:mt-0 ml-0 sm:ml-6 min-w-[120px] shadow-sm transform active:scale-95 transition-all text-xs py-2.5 h-10"
               >
                 {copied ? "Copied" : "Copy"}
               </Button>
