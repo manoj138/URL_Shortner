@@ -3,34 +3,32 @@ import Input from "../../../components/common/Input";
 import { Link, Send } from "lucide-react";
 import Button from "../../../components/common/Button";
 import { Api, handleApiError } from "../../../components/common/Api/api";
+import Urltables from "./Urltables";
 
 const Urlindex = () => {
-const [originUrl, setOriginUrl] = useState({
-  originalUrl: ""
-});
+  const [originUrl, setOriginUrl] = useState({
+    originalUrl: "",
+  });
   const [shortUrl, setShortUrl] = useState();
   console.log("🚀 ~ Urlindex ~ originUrl:", originUrl);
 
   const inputHandler = (e) => {
-  setOriginUrl((prev) => ({
-  ...prev,
-  [e.target.name]: e.target.value,
-}));
+    setOriginUrl((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   };
 
-  const submitHandler = async (e)=>{
-   e.preventDefault();
+  const submitHandler = async (e) => {
+    e.preventDefault();
     try {
-        const res = await Api.post("/url/shorten", originUrl);
-        setShortUrl(res.data.data)
-        console.log("🚀 ~ submitHandler ~ res:", res)
+      const res = await Api.post("/url/shorten", originUrl);
+      setShortUrl(res.data.data);
+      console.log("🚀 ~ submitHandler ~ res:", res);
     } catch (error) {
-        return handleApiError(error)
+      return handleApiError(error);
     }
-  }
-
-
-
+  };
 
   return (
     <div>
@@ -49,11 +47,13 @@ const [originUrl, setOriginUrl] = useState({
         </Button>
       </form>
 
-      <div >
-       <a href={shortUrl} target="_blank" rel="noreferrer">
-  {shortUrl}
-</a>
+      <div>
+        <a href={shortUrl} target="_blank" rel="noreferrer">
+          {shortUrl}
+        </a>
       </div>
+
+      <Urltables/>
     </div>
   );
 };
