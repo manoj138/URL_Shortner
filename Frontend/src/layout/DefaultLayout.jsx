@@ -4,9 +4,9 @@ import { Github, Twitter, Linkedin, Zap } from 'lucide-react';
 
 const DefaultLayout = ({ children }) => {
   return (
-    <div className="min-h-screen flex flex-col bg-mesh animate-mesh relative overflow-x-hidden transition-colors duration-500 selection:bg-accent-500/30">
-      {/* Background patterns */}
-      <div className="fixed inset-0 bg-slate-50 dark:bg-slate-950 -z-20 transition-colors duration-500"></div>
+    <div className="min-h-screen flex flex-col relative overflow-x-hidden transition-colors duration-500 selection:bg-accent-500/30">
+      {/* Background patterns - Infinity Core */}
+      <div className="fixed inset-0 bg-slate-50 dark:bg-slate-950 bg-mesh animate-mesh -z-20 transition-colors duration-500"></div>
       
       <Navbar />
 

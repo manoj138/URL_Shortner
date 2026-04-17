@@ -20,7 +20,7 @@ const Navbar = () => {
     <header className={`fixed top-0 inset-x-0 z-[100] transition-all duration-500 flex items-center justify-center pointer-events-none font-sans ${
       isScrolled ? 'h-16 pt-2' : 'h-24 pt-6'
     }`}>
-      <div className={`w-full max-w-7xl transition-all duration-500 mx-4 sm:mx-6 flex items-center justify-between pointer-events-auto border rounded-2xl px-6 ${
+      <div className={`w-full max-w-[1400px] transition-all duration-500 mx-4 sm:mx-6 flex items-center justify-between pointer-events-auto border rounded-2xl px-6 ${
         isScrolled 
           ? 'h-14 bg-white/90 dark:bg-slate-950/80 backdrop-blur-xl border-slate-200 dark:border-white/5 shadow-2xl shadow-brand-500/10' 
           : 'h-16 bg-white/70 dark:bg-slate-900/40 backdrop-blur-md border-white/40 dark:border-white/5'

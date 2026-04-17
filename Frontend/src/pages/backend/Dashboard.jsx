@@ -30,18 +30,18 @@ const Dashboard = () => {
         <div className="section-container text-center space-y-12 relative z-10">
           <div className="space-y-6">
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1] animate-reveal delay-100 italic">
+            <h1 className="text-4xl md:text-6xl lg:text-8xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.05] animate-reveal delay-100 italic">
               Shorten <span className="text-brand-600 drop-shadow-sm">Share.</span>
             </h1>
             
-            <p className="max-w-xl mx-auto text-base text-slate-600 dark:text-slate-400 font-medium leading-relaxed animate-reveal delay-200">
+            <p className="max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed animate-reveal delay-200">
               The professional choice for link management. Build your audience 
               with trackable, branded links that scale with your business.
             </p>
           </div>
 
           {/* Core Action Tool */}
-          <div className="w-full max-w-6xl mx-auto px-4 relative group animate-reveal delay-300">
+          <div className="w-full max-w-7xl mx-auto px-4 relative group animate-reveal delay-300">
             <Urlindex />
           </div>
 
@@ -108,10 +108,10 @@ const Dashboard = () => {
 
       {/* Product Highlight - Pro Split */}
       <section className="section-container">
-         <div className="card-premium !p-2 border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-slate-900/30 overflow-hidden animate-reveal">
+         <div className="card-premium !p-2 border-slate-200/50 dark:border-white/5 bg-white/5 dark:bg-white/5 backdrop-blur-3xl overflow-hidden animate-reveal">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] gap-2 items-stretch font-sans">
                {/* Left Context */}
-               <div className="p-10 md:p-16 bg-white dark:bg-slate-900 rounded-[2rem] flex flex-col justify-between relative">
+               <div className="p-10 md:p-16 bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl rounded-[2rem] flex flex-col justify-between relative shadow-sm border border-white/20 dark:border-white/5">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-brand-500/5 blur-[100px] rounded-full animate-float"></div>
                   <div className="space-y-20 relative z-10">
                     <div className="space-y-6">
@@ -209,10 +209,10 @@ const Dashboard = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section - Seamless Mesh Integration */}
       <section className="section-container">
-         <div className="relative overflow-hidden bg-slate-950 rounded-[4rem] p-20 md:p-32 text-center animate-reveal">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-600/20 blur-[150px] rounded-full animate-mesh"></div>
+         <div className="relative overflow-hidden bg-slate-900/40 dark:bg-slate-950/20 backdrop-blur-3xl rounded-[4rem] p-20 md:p-32 text-center animate-reveal border border-slate-200/50 dark:border-white/5">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-600/10 blur-[150px] rounded-full animate-mesh"></div>
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-400/10 blur-[120px] rounded-full animate-mesh" style={{ animationDelay: '-5s' }}></div>
             
             <div className="relative z-10 space-y-12 max-w-3xl mx-auto font-sans">

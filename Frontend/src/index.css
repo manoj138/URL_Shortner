@@ -97,7 +97,7 @@
   }
 
   .section-container {
-    @apply w-full max-w-7xl mx-auto px-4 md:px-8;
+    @apply w-full max-w-[1400px] mx-auto px-6 md:px-12;
   }
   
   .glass-morphism {
@@ -135,6 +135,10 @@
   .animate-mesh {
     animation: mesh 12s ease-in-out infinite alternate;
     background-size: 200% 200%;
+  }
+
+  .card-bubble {
+    @apply absolute rounded-full blur-[40px] opacity-20 transition-all duration-1000 group-hover:scale-150 group-hover:opacity-40;
   }
 
   .shimmer-effect {
