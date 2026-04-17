@@ -60,8 +60,6 @@ const Urlindex = () => {
            </div>
         </div>
 
-        <div className="absolute -top-16 -right-16 w-32 h-32 bg-brand-500/10 blur-3xl rounded-full"></div>
-        <div className="absolute -bottom-16 -left-16 w-32 h-32 bg-accent-500/10 blur-3xl rounded-full"></div>
 
         <form onSubmit={submitHandler} className="space-y-6 relative z-10 font-sans animate-reveal">
           <div className="flex flex-col md:flex-row gap-3 items-stretch">

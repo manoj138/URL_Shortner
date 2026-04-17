@@ -42,7 +42,6 @@ const Dashboard = () => {
 
           {/* Core Action Tool */}
           <div className="w-full max-w-6xl mx-auto px-4 relative group animate-reveal delay-300">
-            <div className="absolute -inset-8 bg-linear-to-r from-indigo-500/10 via-brand-500/10 to-indigo-500/10 blur-3xl rounded-[3rem] opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
             <Urlindex />
           </div>
 
