@@ -10,25 +10,32 @@ const Card = ({
   hoverable = false,
   noPadding = false,
   bordered = true,
+  variant = 'default',
   ...props 
 }) => {
+  const variants = {
+    default: 'bg-white dark:bg-slate-900/60 backdrop-blur-xl border-white/60 dark:border-slate-800/50 shadow-premium',
+    premium: 'card-premium',
+    glass: 'glass-morphism',
+  };
+
   return (
     <div 
       className={`
-        bg-white dark:bg-surface-card-dark 
-        rounded-3xl
-        transition-all duration-300
-        ${bordered ? 'border border-gray-100 dark:border-slate-800' : ''}
-        ${hoverable ? 'hover:shadow-xl hover:shadow-gray-200/50 dark:hover:shadow-black/50 hover:-translate-y-1' : 'shadow-sm'}
+        rounded-[2.5rem]
+        transition-all duration-500
+        ${bordered ? 'border' : ''}
+        ${variants[variant]}
+        ${hoverable ? 'hover:-translate-y-2 hover:shadow-2xl' : ''}
         ${className}
       `}
       {...props}
     >
       {(title || subtitle || headerAction) && (
-        <div className="px-6 py-5 border-b border-gray-50 dark:border-slate-800 flex items-center justify-between gap-4 rounded-t-3xl bg-inherit">
+        <div className="px-8 py-7 border-b border-gray-100/50 dark:border-slate-800/50 flex items-center justify-between gap-4 rounded-t-[2.5rem]">
           <div>
-            {title && <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 leading-tight">{title}</h3>}
-            {subtitle && <p className="text-sm text-gray-400 mt-1">{subtitle}</p>}
+            {title && <h3 className="text-xl font-black text-gray-900 dark:text-gray-100 leading-tight tracking-tight">{title}</h3>}
+            {subtitle && <p className="text-sm font-medium text-gray-400 dark:text-gray-500 mt-1.5 leading-relaxed">{subtitle}</p>}
           </div>
           {headerAction && (
             <div className="flex-shrink-0">
@@ -38,12 +45,12 @@ const Card = ({
         </div>
       )}
 
-      <div className={`${noPadding ? '' : 'p-6'}`}>
+      <div className={`${noPadding ? '' : 'p-8'}`}>
         {children}
       </div>
 
       {footer && (
-        <div className="px-6 py-4 bg-gray-50/50 dark:bg-gray-800/20 border-t border-gray-50 dark:border-slate-800 rounded-b-3xl">
+        <div className="px-8 py-6 bg-gray-50/30 dark:bg-slate-800/20 border-t border-gray-100/50 dark:border-slate-800/50 rounded-b-[2.5rem]">
           {footer}
         </div>
       )}

@@ -10,36 +10,36 @@ const Table = ({
 }) => {
   return (
     <div
-      className={`w-full overflow-x-auto rounded-2xl border border-gray-100 dark:border-slate-800 shadow-sm ${className}`}
+      className={`w-full overflow-x-auto rounded-[2rem] border border-gray-100 dark:border-slate-800/50 bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl ${className}`}
     >
       <table className="w-full text-left border-collapse" {...props}>
-        <thead className="bg-gray-50/80 dark:bg-gray-800/50 backdrop-blur-md sticky top-0 z-10">
-          <tr>
+        <thead>
+          <tr className="bg-gray-50/50 dark:bg-slate-800/30">
             {columns.map((col, idx) => (
               <th
                 key={idx}
-                className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest border-b border-gray-100 dark:border-slate-800"
+                className={`px-8 py-5 text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] border-b border-gray-100 dark:border-slate-800/50 ${idx === 0 ? 'rounded-tl-[2rem]' : ''} ${idx === columns.length - 1 ? 'rounded-tr-[2rem]' : ''}`}
               >
                 {col.header}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-50 dark:divide-slate-800">
+        <tbody className="divide-y divide-gray-100/50 dark:divide-slate-800/50">
           {data.length > 0 ? (
             data.map((row, rowIdx) => (
               <tr
                 key={rowIdx}
                 className={`
-                  transition-colors
-                  ${hoverable ? "hover:bg-blue-50/30 dark:hover:bg-blue-900/5" : ""}
-                  ${striped && rowIdx % 2 !== 0 ? "bg-gray-50/30 dark:bg-gray-800/10" : "bg-white dark:bg-surface-card-dark"}
+                  transition-all duration-300 group
+                  ${hoverable ? "hover:bg-brand-50/30 dark:hover:bg-brand-900/10" : ""}
+                  ${striped && rowIdx % 2 !== 0 ? "bg-gray-50/20 dark:bg-slate-800/5" : "bg-transparent"}
                 `}
               >
                 {columns.map((col, colIdx) => (
                   <td
                     key={colIdx}
-                    className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300"
+                    className={`px-8 py-6 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors group-hover:text-brand-600 dark:group-hover:text-brand-400 ${rowIdx === data.length - 1 && colIdx === 0 ? 'rounded-bl-[2rem]' : ''} ${rowIdx === data.length - 1 && colIdx === columns.length - 1 ? 'rounded-br-[2rem]' : ''}`}
                   >
                     {col.render
                       ? col.render(row[col.accessor], row, rowIdx)
@@ -52,9 +52,9 @@ const Table = ({
             <tr>
               <td
                 colSpan={columns.length}
-                className="px-6 py-12 text-center text-gray-400 italic bg-white dark:bg-surface-card-dark"
+                className="px-8 py-20 text-center text-gray-400 font-medium italic rounded-b-[2rem]"
               >
-                No data available
+                No data available in this view
               </td>
             </tr>
           )}
