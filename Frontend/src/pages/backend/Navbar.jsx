@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ThemeToggle from "../../components/common/ThemeToggle";
 import Avatar from "../../components/common/Avatar";
@@ -6,12 +6,28 @@ import Button from "../../components/common/Button";
 import { Bell, Zap, Sparkles } from 'lucide-react';
 
 const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="h-20 sticky top-0 z-50 px-4 sm:px-6 flex items-center justify-center pointer-events-none font-sans">
-      <div className="w-full max-w-7xl h-16 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl rounded-2xl px-6 flex items-center justify-between pointer-events-auto border border-slate-200 dark:border-slate-800 shadow-sm">
+    <header className={`fixed top-0 inset-x-0 z-[100] transition-all duration-500 flex items-center justify-center pointer-events-none font-sans ${
+      isScrolled ? 'h-16 pt-2' : 'h-24 pt-6'
+    }`}>
+      <div className={`w-full max-w-7xl transition-all duration-500 mx-4 sm:mx-6 flex items-center justify-between pointer-events-auto border rounded-2xl px-6 ${
+        isScrolled 
+          ? 'h-14 bg-white/90 dark:bg-slate-950/80 backdrop-blur-xl border-slate-200 dark:border-white/5 shadow-2xl shadow-indigo-500/10' 
+          : 'h-16 bg-white/70 dark:bg-slate-900/40 backdrop-blur-md border-white/40 dark:border-white/5'
+      }`}>
         {/* Logo - Professional Branding */}
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-600/20 group-hover:scale-105 transition-transform">
+          <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-600/20 group-hover:rotate-12 transition-all">
             <Zap size={18} fill="white" />
           </div>
           <span className="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">
@@ -29,7 +45,7 @@ const Navbar = () => {
             <Link 
               key={link.label}
               to={link.path} 
-              className="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900"
+              className="px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900"
             >
               {link.label}
             </Link>
@@ -47,17 +63,17 @@ const Navbar = () => {
           
           <div className="flex items-center gap-3 pl-1">
             <div className="text-right hidden lg:block mr-1">
-              <p className="text-sm font-bold text-slate-900 dark:text-white leading-none">Manoj Chougule</p>
+              <p className="text-[11px] font-black text-slate-900 dark:text-white leading-none uppercase tracking-wider">Manoj Chougule</p>
               <div className="flex items-center justify-end gap-1 mt-1.5">
                 <Sparkles size={11} className="text-amber-500" />
-                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">PRO Member</span>
+                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">PRO</span>
               </div>
             </div>
             <Avatar 
               initials="MC" 
               status="online"
               size="sm"
-              className="cursor-pointer"
+              className="cursor-pointer hover:scale-110 transition-transform"
             />
           </div>
         </div>
@@ -66,4 +82,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar;
