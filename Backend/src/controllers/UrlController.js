@@ -6,7 +6,7 @@ const { nanoid } = require("nanoid");
 
 const createShortUrl = async (req, res) => {
     try {
-        const originalUrl = req.body;
+      const { originalUrl } = req.body;
         if (!originalUrl) {
             return handle400(res, "URL is required")
         }
@@ -28,7 +28,7 @@ const createShortUrl = async (req, res) => {
             shortCode
         })
 
-        const shortUrl = `${process.env.BASE_URl}/${shortCode}`;
+        const shortUrl = `${process.env.BASE_URL}/${shortCode}`;
 
         return handle201(res, shortUrl, "short  url genrated")
 
@@ -39,8 +39,7 @@ const createShortUrl = async (req, res) => {
 
 const redirectUrl = async (req, res)=>{
     try {
-        const shortCode = req.params;
-       
+       const { shortCode } = req.params;
         const url = await Url.findOne({shortCode});
 
         if(!url){
