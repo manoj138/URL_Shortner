@@ -67,64 +67,63 @@ const Urltables = () => {
   };
 
   const statItems = [
-    { label: 'Short Links', value: stats.totalLinks, icon: Link2, color: 'text-brand-500', bg: 'bg-brand-50 dark:bg-brand-900/10' },
-    { label: 'Total Clicks', value: stats.totalClicks, icon: MousePointer2, color: 'text-emerald-500', bg: 'bg-emerald-50 dark:bg-emerald-900/10' },
-    { label: 'Performance', value: `${stats.avgClicks}%`, icon: TrendingUp, color: 'text-amber-500', bg: 'bg-amber-50 dark:bg-amber-900/10' },
-    { label: 'Global Reach', value: stats.activeLinks, icon: Globe, color: 'text-purple-500', bg: 'bg-purple-50 dark:bg-purple-900/10' },
+    { label: 'Total Links', value: stats.totalLinks, icon: Link2, color: 'text-brand-600', bg: 'bg-brand-50 dark:bg-brand-900/40' },
+    { label: 'Total Clicks', value: stats.totalClicks, icon: MousePointer2, color: 'text-indigo-600', bg: 'bg-indigo-50 dark:bg-indigo-900/40' },
+    { label: 'Performance', value: `${stats.avgClicks}%`, icon: TrendingUp, color: 'text-emerald-600', bg: 'bg-emerald-50 dark:bg-emerald-900/40' },
+    { label: 'Global Nodes', value: stats.activeLinks, icon: Globe, color: 'text-slate-600', bg: 'bg-slate-50 dark:bg-slate-900/40' },
   ];
 
   // Table columns
   const columns = [
     {
-      header: "Source Destination",
+      header: "Destination URL",
       accessor: "originalUrl",
       render: (val, row) => (
-        <div className="flex flex-col gap-1.5 max-w-xs md:max-w-sm">
-          <div className="flex items-center gap-2 text-sm font-bold text-gray-900 dark:text-gray-100 truncate group">
-            <div className="p-1.5 rounded-lg bg-gray-50 dark:bg-slate-800 text-gray-400 group-hover:text-brand-500 transition-colors">
-              <LinkIcon size={14} />
+        <div className="flex flex-col gap-1 max-w-xs md:max-w-md font-sans">
+          <div className="flex items-center gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200 truncate group">
+            <div className="p-1 rounded bg-slate-50 dark:bg-slate-800 text-slate-400 group-hover:text-brand-600 transition-colors">
+              <LinkIcon size={12} />
             </div>
             <span className="truncate">{val}</span>
           </div>
-          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400 ml-9">
+          <div className="flex items-center gap-2 text-[10px] font-bold text-slate-400 ml-7 tracking-tight">
              <Clock size={10} />
-             <span>Created on {new Date(row.createdAt).toLocaleDateString()}</span>
+             <span>Created {new Date(row.createdAt).toLocaleDateString()}</span>
           </div>
         </div>
       )
     },
     {
-      header: "Short Link",
+      header: "Short ID",
       accessor: "shortCode",
       render: (val) => {
         const shortUrl = `${BASE_URL}/${val}`;
         return (
-          <div className="flex items-center gap-2">
+          <div className="font-mono">
             <a 
               href={shortUrl} 
               target="_blank" 
               rel="noreferrer"
-              className="px-4 py-2.5 rounded-2xl bg-brand-50/50 dark:bg-brand-900/20 text-brand-700 dark:text-brand-400 font-black text-xs hover:bg-brand-500 hover:text-white transition-all duration-300 flex items-center gap-2 border border-brand-100 dark:border-brand-900/50 shadow-sm"
+              className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs hover:bg-brand-600 hover:text-white transition-all flex items-center gap-2 border border-slate-200 dark:border-white/5"
             >
               {val}
-              <ExternalLink size={12} strokeWidth={3} />
+              <ExternalLink size={10} />
             </a>
           </div>
         );
       },
     },
     {
-      header: "Engagement",
+      header: "Metrics",
       accessor: "clicks",
       render: (val) => (
-        <div className="flex flex-col gap-2 min-w-[120px]">
-            <div className="flex items-center justify-between mb-1">
-                <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">{val} Clicks</span>
-                <span className="text-[10px] font-black text-emerald-500">Live</span>
+        <div className="flex flex-col gap-2 min-w-[100px] font-sans">
+            <div className="flex items-center justify-between mb-0.5">
+                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">{val} Clicks</span>
             </div>
-            <div className="h-1.5 w-full bg-gray-100 dark:bg-slate-800 rounded-full overflow-hidden">
+            <div className="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                 <div 
-                    className="h-full bg-brand-500 rounded-full transition-all duration-1000" 
+                    className="h-full bg-brand-600 rounded-full transition-all duration-1000" 
                     style={{ width: `${Math.min((val/20)*100, 100)}%` }}
                 ></div>
             </div>
@@ -132,15 +131,15 @@ const Urltables = () => {
       )
     },
     {
-      header: "Action",
+      header: "Actions",
       accessor: "_id",
       render: (id) => (
-        <div className="flex gap-2 justify-end">
+        <div className="flex gap-1 justify-end">
           <Button 
             variant="ghost" 
             size="sm" 
             onClick={() => openDeleteModal(id)}
-            className="text-rose-500 hover:bg-rose-500/10 hover:text-rose-600 rounded-xl"
+            className="text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/20 p-2"
             icon={Trash2}
           />
         </div>
@@ -149,47 +148,41 @@ const Urltables = () => {
   ];
 
   return (
-    <div className="space-y-12 animate-slide-up">
+    <div className="space-y-10 animate-reveal">
       {/* Page Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-        <div className="space-y-3 text-center md:text-left">
-            <div className="flex items-center gap-2 justify-center md:justify-start">
-                <Sparkles size={16} className="text-amber-500" />
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-600">Analytics Dashboard</span>
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="space-y-1">
+            <div className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-brand-500 animate-pulse"></span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Resource Monitor</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white tracking-tighter">
-                My <span className="text-gradient">Links</span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight animate-reveal delay-100">
+                My Link <span className="text-brand-600">Inventory.</span>
             </h2>
-            <p className="text-gray-500 dark:text-gray-400 font-bold max-w-md">
-                Monitor performance, manage redirects, and gain real-time insights into your audience engagement.
-            </p>
         </div>
         
-        <div className="flex items-center gap-3 self-center md:self-end">
-          <div className="px-6 py-3 rounded-[1.5rem] bg-white dark:bg-slate-900 border-2 border-brand-50 dark:border-slate-800/50 shadow-premium flex items-center gap-4 group hover:border-brand-500/30 transition-all">
-            <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 block relative">
-                 <div className="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-75"></div>
-            </div>
-            <span className="text-xs font-black text-gray-700 dark:text-gray-300 uppercase tracking-widest">Global Edge Live</span>
+        <div className="px-5 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/5 flex items-center gap-3 shadow-sm hover:border-brand-500/20 transition-all group animate-reveal delay-200">
+          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 relative">
+               <div className="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-75"></div>
           </div>
+          <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest group-hover:text-emerald-500 transition-colors">Network Live</span>
         </div>
       </div>
 
       {/* Stats Quick View */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-sans">
         {statItems.map((item, idx) => (
           <div 
             key={item.label} 
-            className="card-premium group" 
-            style={{ animationDelay: `${idx * 100}ms` }}
+            className={`card-premium !p-5 group hover:border-brand-500/30 animate-reveal delay-${(idx+1)*100}`} 
           >
-            <div className="flex flex-col gap-6">
-              <div className={`p-4 rounded-2xl ${item.bg} ${item.color} w-fit shadow-lg shadow-current/5 group-hover:scale-110 transition-transform`}>
-                <item.icon size={24} strokeWidth={2.5} />
+            <div className="flex flex-col gap-4">
+              <div className={`p-2.5 rounded-xl ${item.bg} ${item.color} w-fit shadow-xs group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
+                <item.icon size={20} strokeWidth={2.5} />
               </div>
-              <div className="space-y-1">
-                <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">{item.label}</p>
-                <h3 className="text-4xl font-black text-gray-900 dark:text-white tracking-tighter transition-all">
+              <div className="space-y-0.5">
+                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{item.label}</p>
+                <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
                   {item.value}
                 </h3>
               </div>
@@ -201,33 +194,35 @@ const Urltables = () => {
       {/* Table Section */}
       <Card 
         variant="premium"
-        className="overflow-visible"
+        className="overflow-visible !rounded-[3rem] animate-reveal delay-400"
         title="URL Repository" 
         subtitle="Manage your generated short URLs and monitor engagement metrics in real-time."
         headerAction={
-          <div className="flex gap-2">
-             <Button variant="glass" size="sm" icon={TrendingUp}>Export Data</Button>
+          <div className="flex gap-4">
+             <Button variant="glass" size="md" icon={TrendingUp} className="rounded-2xl font-black hover:scale-105 transition-all">Export Stats</Button>
           </div>
         }
       >
         {urls.length > 0 ? (
-          <Table
-            columns={columns}
-            data={urls}
-            hoverable
-            className="border-none shadow-none bg-transparent"
-          />
+          <div className="px-2">
+            <Table
+                columns={columns}
+                data={urls}
+                hoverable
+                className="border-none shadow-none bg-transparent"
+            />
+          </div>
         ) : (
-          <div className="py-20 text-center space-y-6">
-             <div className="w-20 h-20 bg-gray-50 dark:bg-slate-800 rounded-3xl flex items-center justify-center mx-auto text-gray-300">
-                <AlertCircle size={40} />
+          <div className="py-32 text-center space-y-10">
+             <div className="w-24 h-24 bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] flex items-center justify-center mx-auto text-slate-300 shadow-inner animate-float">
+                <AlertCircle size={48} />
              </div>
-             <div className="space-y-2">
-                <h3 className="text-xl font-black text-gray-900 dark:text-white tracking-tight">Repository is Empty</h3>
-                <p className="text-sm text-gray-500 font-bold">Start shortening URLs to populate your analytics dashboard.</p>
+             <div className="space-y-4">
+                <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter">Repository is Empty</h3>
+                <p className="text-lg text-slate-500 font-bold max-w-sm mx-auto">Start shortening URLs to populate your analytics cloud with live data.</p>
              </div>
              <Link to="/">
-                <Button variant="primary" icon={Zap}>Shorten First Link</Button>
+                <Button variant="accent" icon={Zap} size="lg" className="px-12 shadow-2xl hover:scale-110 transition-all">Shorten First Link</Button>
              </Link>
           </div>
         )}
@@ -239,7 +234,7 @@ const Urltables = () => {
         onConfirm={handleDelete}
         isLoading={isDeleting}
         title="Permanently Delete URL?"
-        message="This action cannot be undone. All click history and redirect logic for this shortcode will be purged from our global edge network."
+        message="This action cannot be undone. All click history and redirect logic for this shortcode will be purged from our global edge network forever."
         confirmText="Confirm Deletion"
       />
     </div>

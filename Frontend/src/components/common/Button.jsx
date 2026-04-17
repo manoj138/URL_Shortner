@@ -11,28 +11,35 @@ const Button = ({
   disabled = false,
   ...props 
 }) => {
-  const baseStyles = "inline-flex items-center justify-center font-bold transition-all duration-300 active:scale-95 disabled:opacity-50 disabled:pointer-events-none select-none";
+  const baseStyles = "inline-flex items-center justify-center font-semibold transition-all duration-300 active:scale-95 disabled:opacity-50 disabled:pointer-events-none select-none font-sans tracking-tight";
   
   const variants = {
-    primary: "bg-brand-600 hover:bg-brand-700 text-white shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:-translate-y-0.5",
-    secondary: "bg-white/10 dark:bg-slate-800/50 backdrop-blur-md border border-white/20 dark:border-slate-700/50 hover:bg-white/20 dark:hover:bg-slate-800 text-gray-900 dark:text-white",
-    outline: "border-2 border-brand-200 dark:border-brand-900/50 hover:border-brand-500 dark:hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 text-gray-700 dark:text-gray-200",
-    ghost: "bg-transparent hover:bg-brand-50 dark:hover:bg-brand-900/20 text-brand-600 dark:text-brand-400",
-    success: "bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg shadow-emerald-500/20",
-    danger: "bg-rose-500 hover:bg-rose-600 text-white shadow-lg shadow-rose-500/20",
-    glass: "glass-morphism hover:bg-white/60 dark:hover:bg-slate-900/60 text-gray-900 dark:text-white border-white/40",
+    primary: "bg-brand-600 hover:bg-brand-700 text-white shadow-lg shadow-brand-600/20 hover:-translate-y-0.5",
+    accent: "bg-accent-500 hover:bg-accent-600 text-slate-950 shadow-lg shadow-accent-500/20 hover:-translate-y-0.5",
+    secondary: "bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-900 dark:text-white",
+    outline: "border-2 border-slate-200 dark:border-slate-800 hover:border-brand-500 dark:hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 text-slate-600 dark:text-slate-300",
+    ghost: "bg-transparent hover:bg-slate-100 dark:hover:bg-slate-900/50 text-slate-600 dark:text-slate-400",
+    success: "bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-600/20",
+    danger: "bg-rose-600 hover:bg-rose-700 text-white shadow-lg shadow-rose-600/20",
+    glass: "bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white",
   };
 
   const sizes = {
-    sm: "px-4 py-2 text-xs gap-1.5 rounded-xl",
-    md: "px-6 py-3 text-sm gap-2 rounded-2xl",
-    lg: "px-8 py-4 text-base gap-3 rounded-[1.25rem]",
-    xl: "px-10 py-5 text-lg gap-4 rounded-3xl",
+    sm: "px-4 py-2 text-xs gap-1.5 rounded-lg",
+    md: "px-6 py-3 text-sm gap-2 rounded-xl",
+    lg: "px-8 py-4 text-base gap-2.5 rounded-xl",
+    xl: "px-10 py-5 text-lg gap-3 rounded-2xl",
   };
 
   return (
     <button
-      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
+      className={`
+        ${baseStyles} 
+        ${variants[variant]} 
+        ${sizes[size]} 
+        ${['primary', 'accent', 'success'].includes(variant) ? 'shimmer-effect' : ''}
+        ${className}
+      `}
       disabled={disabled || loading}
       {...props}
     >

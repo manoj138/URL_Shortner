@@ -28,11 +28,11 @@ const Badge = ({
   return (
     <span 
       className={`
-        inline-flex items-center justify-center font-black tracking-[0.1em] uppercase transition-all duration-300 border
+        inline-flex items-center justify-center font-bold tracking-widest uppercase transition-all duration-500 border
         ${pill ? 'rounded-full' : 'rounded-lg'}
         ${variants[variant] || variants.primary}
         ${sizes[size] || sizes.md}
-        hover:scale-110 active:scale-95 cursor-default
+        hover:scale-105 active:scale-95 cursor-default
         ${className}
       `}
       {...props}

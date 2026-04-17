@@ -1,70 +1,56 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ThemeToggle from "../../components/common/ThemeToggle";
 import Avatar from "../../components/common/Avatar";
-import { Bell, Zap, LayoutDashboard, Link2, Sparkles } from 'lucide-react';
+import Button from "../../components/common/Button";
+import { Bell, Zap, Sparkles } from 'lucide-react';
 
 const Navbar = () => {
-  const navLinks = [
-    { name: 'Dashboard', path: '/', icon: LayoutDashboard },
-    { name: 'My Links', path: '/links', icon: Link2 },
-  ];
-
   return (
-    <header className="h-20 sticky top-0 z-50 px-4 sm:px-6 flex items-center justify-center pointer-events-none">
-      <div className="w-full max-w-7xl h-16 glass rounded-[2rem] px-6 flex items-center justify-between pointer-events-auto border border-white/40 dark:border-slate-800/50 shadow-premium">
-        {/* Left side - Logo & Nav */}
-        <div className="flex items-center gap-10">
-          <NavLink to="/" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-2xl bg-brand-600 flex items-center justify-center text-white shadow-lg shadow-brand-600/30 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-              <Zap size={22} fill="currentColor" />
-            </div>
-            <div className="flex flex-col">
-                <span className="text-2xl font-black tracking-tighter text-gray-900 dark:text-white leading-none">
-                URLly
-                </span>
-                <span className="text-xs font-bold text-brand-500 uppercase tracking-widest leading-none mt-1">
-                Premium
-                </span>
-            </div>
-          </NavLink>
+    <header className="h-20 sticky top-0 z-50 px-4 sm:px-6 flex items-center justify-center pointer-events-none font-sans">
+      <div className="w-full max-w-7xl h-16 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl rounded-2xl px-6 flex items-center justify-between pointer-events-auto border border-slate-200 dark:border-slate-800 shadow-sm">
+        {/* Logo - Professional Branding */}
+        <Link to="/" className="flex items-center gap-2 group">
+          <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-600/20 group-hover:scale-105 transition-transform">
+            <Zap size={18} fill="white" />
+          </div>
+          <span className="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+            URL<span className="text-indigo-600">ly.</span>
+          </span>
+        </Link>
 
-          <nav className="hidden md:flex items-center gap-2">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.name}
-                to={link.path}
-                className={({ isActive }) =>
-                  `flex items-center gap-2 px-5 py-2.5 rounded-2xl text-base font-bold transition-all duration-300 ${
-                    isActive
-                      ? 'bg-brand-500 text-white shadow-lg shadow-brand-500/20'
-                      : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-slate-800/50'
-                  }`
-                }
-              >
-                <link.icon size={16} />
-                {link.name}
-              </NavLink>
-            ))}
-          </nav>
+        {/* Nav Links - Professional SaaS Style */}
+        <div className="hidden md:flex items-center gap-1">
+          {[
+            { label: 'Platform', path: '/' },
+            { label: 'Inventory', path: '/links' },
+            { label: 'Solutions', path: '#' },
+          ].map((link) => (
+            <Link 
+              key={link.label}
+              to={link.path} 
+              className="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
 
-        {/* Right side - Actions */}
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2 pr-4 border-r border-gray-100 dark:border-slate-800/50">
-            <ThemeToggle className="!p-2.5 rounded-2xl hover:bg-gray-100 dark:hover:bg-slate-800/50 transition-colors" />
-            <button className="p-2.5 rounded-2xl hover:bg-gray-100 dark:hover:bg-slate-800/50 text-gray-500 transition-all relative group">
-              <Bell size={20} className="group-hover:rotate-12 transition-transform" />
-              <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-rose-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+          <div className="flex items-center gap-2 pr-4 border-r border-slate-100 dark:border-white/5">
+            <ThemeToggle className="!p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors text-slate-500" />
+            <button className="p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900 text-slate-500 transition-all relative group">
+              <Bell size={18} className="group-hover:rotate-12 transition-transform" />
+              <span className="absolute top-2.5 right-2.5 w-1.5 h-1.5 bg-rose-500 rounded-full border-2 border-white dark:border-slate-950"></span>
             </button>
           </div>
           
           <div className="flex items-center gap-3 pl-1">
             <div className="text-right hidden lg:block mr-1">
-              <p className="text-base font-black text-gray-900 dark:text-gray-100 leading-none">Manoj Chougule</p>
+              <p className="text-sm font-bold text-slate-900 dark:text-white leading-none">Manoj Chougule</p>
               <div className="flex items-center justify-end gap-1 mt-1.5">
                 <Sparkles size={11} className="text-amber-500" />
-                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">PRO Member</span>
+                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">PRO Member</span>
               </div>
             </div>
             <Avatar 
@@ -80,4 +66,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar;

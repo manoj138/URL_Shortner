@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Zap, BarChart3, Rocket, Shield, Globe, ChevronDown, MousePointer2, Layers3, Sparkles, ArrowRight, TrendingUp, Link2 } from 'lucide-react';
+import { Zap, BarChart3, Rocket, Shield, Globe, ChevronDown, MousePointer2, Layers3, Sparkles, ArrowRight, TrendingUp, Link2, CheckCircle2 } from 'lucide-react';
 import Button from '../../components/common/Button';
 import Card from '../../components/common/Card';
 import Urlindex from './UrlShort/Urlindex';
@@ -9,198 +9,206 @@ const Dashboard = () => {
   const [openFaq, setOpenFaq] = useState(null);
 
   const features = [
-    { title: "Lightning Fast", desc: "Shorten your URLs in milliseconds with our optimized infrastructure.", icon: Zap, color: "text-amber-500", bg: "bg-amber-50 dark:bg-amber-900/20" },
-    { title: "Bank-Grade Security", desc: "Your data is encrypted and protected with industry-standard protocols.", icon: Shield, color: "text-blue-500", bg: "bg-blue-50 dark:bg-blue-900/20" },
-    { title: "Real-time Stats", desc: "Track every click with detailed geography and device analytics.", icon: BarChart3, color: "text-emerald-500", bg: "bg-emerald-50 dark:bg-emerald-900/20" },
-    { title: "Global Reach", desc: "Our redirects are served via a globally distributed edge network.", icon: Globe, color: "text-purple-500", bg: "bg-purple-50 dark:bg-purple-900/20" },
+    { title: "Instant Redirection", desc: "Shorten and deploy links globally in under 100ms with our edge infrastructure.", icon: Zap, color: "text-indigo-600", bg: "bg-indigo-50 dark:bg-indigo-950/30" },
+    { title: "Advanced Security", desc: "Enterprise-grade protection with HTTPS encryption and safe-link scanning.", icon: Shield, color: "text-brand-600", bg: "bg-brand-50 dark:bg-brand-950/30" },
+    { title: "Real-time Analytics", desc: "Track performance with sub-second latency for clicks, locations, and devices.", icon: BarChart3, color: "text-emerald-600", bg: "bg-emerald-50 dark:bg-emerald-950/30" },
+    { title: "API First", desc: "Integrate shortening directly into your workflow with our developer-friendly API.", icon: Layers3, color: "text-slate-600", bg: "bg-slate-50 dark:bg-slate-900/50" },
   ];
 
   const faqs = [
-    { q: "Is it free to use?", a: "Yes! Our basic URL shortening and tracking services are completely free for everyone." },
-    { q: "Will my links expire?", a: "No, links created with URLly do not expire as long as they are active and comply with our terms." },
-    { q: "Can I customize my short links?", a: "Premium users can customize the back-half of their links for better branding." },
-    { q: "How do I track my link's performance?", a: "Navigate to 'My Links' page to see total clicks and performance analytics for each link." },
-  ];
-
-  const journey = [
-    { title: "Paste any URL", desc: "Drop a product link, portfolio page, campaign URL, or social bio link.", icon: Sparkles },
-    { title: "Generate instantly", desc: "Create a short URL that is easier to share and easier to remember.", icon: Zap },
-    { title: "Manage from one place", desc: "Review history, monitor clicks, and delete unused URLs from My Links.", icon: Layers3 },
+    { q: "How secure are the short links?", a: "Every link generated is automatically protected with SSL encryption and is scanned for malicious content via our security filters." },
+    { q: "Can I manage links via API?", a: "Yes, our REST API allows you to automate link shortening and fetch analytics programmatically." },
+    { q: "Do short links have an expiration date?", a: "By default, links remain active indefinitely. You can manually delete or manage them from your dashboard repo." },
+    { q: "Is the analytics tracking real-time?", a: "Absolutely. Click data is processed and reflected in your analytics dashboard within milliseconds." },
   ];
 
   return (
-    <div className="space-y-32 py-10">
-      {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center text-center space-y-10 px-4 max-w-5xl mx-auto">
-        <div className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-brand-50/50 dark:bg-brand-900/10 border border-brand-100 dark:border-brand-900/30 text-brand-600 dark:text-brand-400 text-xs font-black uppercase tracking-[0.2em] animate-in zoom-in duration-700">
-          <Rocket size={14} />
-          <span>v2.0 is now live</span>
-          <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
-        </div>
+    <div className="space-y-32 pb-32">
+      {/* Hero Section - Pro Focus */}
+      <section className="relative pt-16 pb-8 overflow-hidden">
+        <div className="absolute inset-0 bg-mesh animate-mesh -z-10 opacity-40"></div>
         
-        <div className="space-y-6">
-          <h1 className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] text-gray-900 dark:text-white">
-            Shorten Your Links <br />
-            <span className="text-gradient">Expand Your Reach</span>
-          </h1>
-          
-          <p className="text-lg md:text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto font-bold leading-relaxed">
-            The ultimate platform to shorten, manage, and track your links with 
-            <span className="text-brand-600 dark:text-brand-500"> real-time analytics </span> 
-            and a state-of-the-art experience.
-          </p>
-        </div>
+        <div className="section-container text-center space-y-12">
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-white/5 text-[10px] font-bold uppercase tracking-widest text-slate-600 dark:text-slate-400 animate-reveal">
+               <span className="flex h-2 w-2 rounded-full bg-indigo-500 animate-pulse"></span>
+               Enterprise URL Management
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1] animate-reveal delay-100 italic">
+              Shorten links.<br />
+              <span className="text-brand-600 drop-shadow-sm">Measure impact.</span>
+            </h1>
+            
+            <p className="max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed animate-reveal delay-200">
+              The professional choice for link management. Build your audience 
+              with trackable, branded links that scale with your business.
+            </p>
+          </div>
 
-        <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row">
-          <Link to="/links" className="w-full sm:w-auto">
-            <Button size="xl" icon={Link2} className="w-full sm:w-auto group">
-              Start Shortening
-              <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </Link>
-          <div className="p-[2px] rounded-3xl bg-linear-to-r from-brand-500/20 via-purple-500/20 to-brand-500/20 group">
-              <div className="px-8 py-5 rounded-[1.4rem] bg-white dark:bg-slate-900 font-bold text-gray-600 dark:text-gray-300 flex items-center gap-3">
-                 <TrendingUp size={18} className="text-emerald-500" />
-                 Built for performance & speed
-              </div>
+          {/* Core Action Tool */}
+          <div className="max-w-4xl mx-auto relative group animate-reveal delay-300">
+            <div className="absolute -inset-4 bg-linear-to-r from-indigo-500/10 via-brand-500/10 to-indigo-500/10 blur-3xl rounded-[3rem] opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+            <Urlindex />
+          </div>
+
+          {/* Social Proof Elements */}
+          <div className="pt-12 flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-30 grayscale hover:grayscale-0 hover:opacity-60 transition-all duration-1000 animate-reveal delay-400">
+             <div className="flex items-center gap-2 font-bold text-xl animate-float">TRUSTED LABS</div>
+             <div className="flex items-center gap-2 font-bold text-xl tracking-tighter uppercase underline decoration-indigo-500 animate-float" style={{ animationDelay: '-1s' }}>Global Analytics</div>
+             <div className="flex items-center gap-2 font-bold text-xl italic animate-float" style={{ animationDelay: '-2s' }}>DataFlow</div>
           </div>
         </div>
       </section>
 
-      {/* Shorten Tool Integration */}
-      <section className="relative px-4">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-64 bg-brand-500/10 dark:bg-brand-500/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
-        <Urlindex />
-      </section>
-
-      {/* Stats/Highlights */}
-      <section className="px-4 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {[
-            { label: "Uptime Guaranteed", value: "99.99%", icon: Shield, color: "text-emerald-500" },
-            { label: "Global Presence", value: "Edge", icon: Globe, color: "text-brand-500" },
-            { label: "Active Links", value: "12M+", icon: Link2, color: "text-purple-500" },
-            { label: "Monthly Clicks", value: "450M+", icon: MousePointer2, color: "text-rose-500" },
-          ].map((item, i) => (
-            <div key={i} className="glass p-8 rounded-[2.5rem] border-white/40 dark:border-slate-800/50 group hover:-translate-y-2 transition-all duration-500">
-               <div className={`p-3 rounded-2xl bg-gray-50 dark:bg-slate-800 w-fit mb-6 ${item.color} group-hover:scale-110 transition-transform`}>
-                 <item.icon size={24} />
-               </div>
-               <p className="text-3xl font-black text-gray-900 dark:text-white tracking-tighter">{item.value}</p>
-               <p className="text-xs font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest mt-2">{item.label}</p>
-            </div>
-          ))}
-      </section>
-
-      {/* Features Grid */}
-      <section className="px-4 max-w-7xl mx-auto space-y-20">
-        <div className="text-center space-y-4">
-          <h2 className="text-4xl md:text-6xl font-black text-gray-900 dark:text-white tracking-tight">Why Choose <span className="text-gradient">URLly?</span></h2>
-          <p className="text-gray-500 dark:text-gray-400 font-bold max-w-xl mx-auto">Powerful features to help you grow your brand and track your audience globally.</p>
-        </div>
-        
+      {/* Analytics Snapshot - LIVING Professional Section */}
+      <section className="section-container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature) => (
-            <Card key={feature.title} variant="premium" hoverable className="group">
-               <div className={`w-14 h-14 rounded-2xl ${feature.bg} ${feature.color} flex items-center justify-center mb-6 shadow-lg shadow-current/10 group-hover:scale-110 transition-transform`}>
-                 <feature.icon size={28} />
+          {[
+            { label: "Active Nodes", value: "142", icon: Globe, suffix: "Global" },
+            { label: "Daily Redirects", value: "24M+", icon: Zap, suffix: "+12%" },
+            { label: "Average Latency", value: "<85ms", icon: Rocket, suffix: "Edge" },
+            { label: "Uptime SLA", value: "99.98%", icon: Shield, suffix: "Guaranteed" },
+          ].map((stat, i) => (
+            <div key={i} className={`card-premium group hover:border-indigo-500/30 font-sans animate-reveal delay-${(i+1)*100}`}>
+               <div className="flex justify-between items-start mb-4">
+                  <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-500 group-hover:bg-indigo-600 group-hover:text-white group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
+                    <stat.icon size={22} strokeWidth={2.5} />
+                  </div>
+                  <span className="text-[10px] font-bold text-emerald-500 bg-emerald-50 dark:bg-emerald-500/10 px-2 py-0.5 rounded-full animate-pulse">
+                    {stat.suffix}
+                  </span>
                </div>
-               <h3 className="text-xl font-black text-gray-900 dark:text-white mb-3 tracking-tight">{feature.title}</h3>
-               <p className="text-sm text-gray-500 dark:text-gray-500 leading-relaxed font-bold">
-                 {feature.desc}
-               </p>
-            </Card>
+               <div className="space-y-0.5">
+                  <h3 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">{stat.value}</h3>
+                  <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">{stat.label}</p>
+               </div>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* Journey Section */}
-      <section className="px-4 max-w-7xl mx-auto">
-        <div className="glass p-4 rounded-[3rem] border-white/60 dark:border-slate-800/50">
-            <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-4 items-stretch">
-                <div className="p-8 md:p-12 space-y-12 bg-white dark:bg-slate-900/50 rounded-[2.5rem]">
-                    <div>
-                        <p className="text-xs font-black uppercase tracking-[0.3em] text-brand-600">Workflow</p>
-                        <h2 className="mt-4 text-4xl font-black text-gray-900 dark:text-white tracking-tighter">Your journey to <br/>cleaner sharing.</h2>
-                    </div>
+      {/* Feature Grid - Crisp & Clean */}
+      <section className="section-container space-y-20">
+        <div className="text-center space-y-4 animate-reveal">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">Built for modern workflows.</h2>
+          <p className="text-slate-500 dark:text-slate-400 font-medium max-w-lg mx-auto">Focus on growing your brand while we handle the link redirection and analytics at scale.</p>
+        </div>
 
-                    <div className="grid gap-6">
-                    {journey.map((item, index) => (
-                        <div key={item.title} className="flex gap-6 items-start group">
-                            <div className="w-14 h-14 rounded-2xl bg-brand-500 text-white flex items-center justify-center shrink-0 shadow-lg shadow-brand-500/20 group-hover:scale-110 transition-transform">
-                                <item.icon size={24} />
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-black text-gray-900 dark:text-white tracking-tight">{item.title}</h3>
-                                <p className="mt-2 text-sm text-gray-500 dark:text-gray-500 font-bold leading-relaxed">{item.desc}</p>
-                            </div>
-                        </div>
-                    ))}
-                    </div>
-                </div>
-
-                <div className="card-premium !bg-brand-600 !border-none text-white overflow-hidden relative group">
-                    <div className="absolute -top-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-1000"></div>
-                    <div className="relative z-10 space-y-12">
-                        <div>
-                            <p className="text-xs font-black uppercase tracking-[0.3em] text-white/50">Experience</p>
-                            <h2 className="mt-4 text-4xl font-black tracking-tighter leading-tight">Everything important <br/>stays visible.</h2>
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-4">
-                        {[
-                            { label: "Redirects", value: "99.9%", icon: Rocket },
-                            { label: "Tracking", value: "24/7", icon: MousePointer2 },
-                        ].map((item) => (
-                            <div key={item.label} className="rounded-3xl bg-white/10 backdrop-blur-md p-6 border border-white/20">
-                                <item.icon size={22} className="text-white/80" />
-                                <p className="mt-6 text-3xl font-black tracking-tighter">{item.value}</p>
-                                <p className="mt-1 text-xs font-bold text-white/60 uppercase tracking-widest">{item.label}</p>
-                            </div>
-                        ))}
-                        </div>
-
-                        <Link to="/links" className="block text-center mr-4">
-                            <Button
-                                variant="glass"
-                                size="xl"
-                                className="w-full rounded-2xl !bg-white !text-brand-600 hover:!bg-brand-50"
-                            >
-                                Get Started Now
-                            </Button>
-                        </Link>
-                    </div>
-                </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 font-sans">
+          {features.map((feature, i) => (
+            <div key={i} className={`space-y-6 group animate-reveal delay-${(i+1)*100}`}>
+               <div className={`w-16 h-16 rounded-[1.5rem] ${feature.bg} ${feature.color} flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 relative overflow-hidden`}>
+                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700"></div>
+                 <feature.icon size={30} className="relative z-10" />
+               </div>
+               <div className="space-y-3">
+                  <h3 className="text-xl font-extrabold text-slate-900 dark:text-white tracking-tight group-hover:text-indigo-600 transition-colors">{feature.title}</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+                    {feature.desc}
+                  </p>
+               </div>
             </div>
+          ))}
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="px-4 max-w-4xl mx-auto space-y-16">
-        <div className="text-center">
-          <h2 className="text-4xl font-black text-gray-900 dark:text-white tracking-tight">Questions? <span className="text-gradient">Answers.</span></h2>
-          <p className="text-gray-500 dark:text-gray-400 mt-4 font-bold">Everything you need to know about the platform.</p>
+      {/* Product Highlight - Pro Split */}
+      <section className="section-container">
+         <div className="card-premium !p-2 border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-slate-900/30 overflow-hidden animate-reveal">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] gap-2 items-stretch font-sans">
+               {/* Left Context */}
+               <div className="p-10 md:p-16 bg-white dark:bg-slate-900 rounded-[2rem] flex flex-col justify-between relative">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 blur-[100px] rounded-full animate-float"></div>
+                  <div className="space-y-20 relative z-10">
+                    <div className="space-y-6">
+                       <p className="text-xs font-bold uppercase tracking-widest text-indigo-600 animate-reveal">Enterprise Ready</p>
+                       <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-[1.1] tracking-tight animate-reveal delay-100">Streamlined for teams <br/>and impact.</h2>
+                    </div>
+
+                    <div className="grid gap-8">
+                       {[
+                         "Automated link generation with REST API",
+                         "Granular traffic insights and click maps",
+                         "Custom brand domains and SSL support",
+                         "Role-based access for large teams"
+                       ].map((item, i) => (
+                          <div key={i} className={`flex items-center gap-4 text-slate-600 dark:text-slate-400 font-medium group animate-reveal delay-${(i+1)*100}`}>
+                             <div className="w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 flex items-center justify-center shrink-0 group-hover:scale-125 transition-transform">
+                                <CheckCircle2 size={14} strokeWidth={3} />
+                             </div>
+                             <span className="text-sm group-hover:text-slate-950 dark:group-hover:text-white transition-colors">{item}</span>
+                          </div>
+                       ))}
+                    </div>
+                  </div>
+                  
+                  <div className="pt-16 border-t border-slate-100 dark:border-white/5 relative z-10">
+                     <div className="flex items-center gap-4">
+                        <div className="flex -space-x-2">
+                           {[1,2,3].map(i => <div key={i} className="w-9 h-9 rounded-full bg-slate-200 border-2 border-white dark:border-slate-900 animate-pulse" style={{ animationDelay: `${i*300}ms` }}></div>)}
+                        </div>
+                        <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">Joined by 200+ new users today</p>
+                     </div>
+                  </div>
+               </div>
+
+               {/* Right Highlight */}
+               <div className="bg-brand-600 rounded-[2rem] p-12 md:p-16 text-white flex flex-col justify-center space-y-20 relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-80 h-80 bg-white/20 blur-[100px] rounded-full group-hover:scale-150 transition-transform duration-1000"></div>
+                  <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-black/10 blur-[80px] rounded-full animate-float"></div>
+                  
+                  <div className="space-y-12 relative z-10">
+                     <h2 className="text-4xl font-extrabold tracking-tight leading-tight">Scale your link network instantly.</h2>
+                     <p className="text-brand-100/80 font-medium leading-relaxed">Join thousands of businesses using URLly to power their marketing and product links.</p>
+                     
+                     <div className="flex flex-col gap-5">
+                        <div className="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-between hover:bg-white/20 transition-colors">
+                           <span className="text-sm font-semibold opacity-60">Uptime</span>
+                           <span className="font-bold flex items-center gap-2">
+                             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                             99.98%
+                           </span>
+                        </div>
+                        <div className="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-between hover:bg-white/20 transition-colors">
+                           <span className="text-sm font-semibold opacity-60">Security</span>
+                           <span className="font-bold italic tracking-wider">ENTERPRISE</span>
+                        </div>
+                     </div>
+                  </div>
+
+                  <Link to="/links" className="relative z-10">
+                    <Button variant="glass" size="lg" className="w-full !bg-white !text-brand-700 shadow-2xl font-extrabold hover:scale-[1.02] active:scale-[0.98]">
+                       Get Started Now
+                    </Button>
+                  </Link>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      {/* FAQ Section - Clean */}
+      <section className="section-container max-w-4xl mx-auto space-y-16">
+        <div className="text-center space-y-2 animate-reveal">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">Frequently Asked.</h2>
+          <p className="text-slate-500 dark:text-slate-400 font-medium">Clear answers for professional link management.</p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-6 font-sans">
           {faqs.map((faq, idx) => (
-            <div 
-              key={idx} 
-              className={`glass rounded-3xl overflow-hidden border border-gray-100 dark:border-slate-800/50 transition-all duration-500 ${openFaq === idx ? 'ring-4 ring-brand-500/10' : ''}`}
-            >
+            <div key={idx} className={`border border-slate-200 dark:border-white/5 rounded-3xl overflow-hidden hover:border-brand-500/30 transition-all duration-500 shadow-sm animate-reveal delay-${idx*100}`}>
               <button 
                 onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                className="w-full px-8 py-6 flex items-center justify-between text-left group"
+                className="w-full px-10 py-7 flex items-center justify-between text-left group bg-white dark:bg-slate-950/60"
               >
-                <span className="text-lg font-black text-gray-900 dark:text-white tracking-tight">{faq.q}</span>
-                <div className={`p-2 rounded-xl bg-gray-50 dark:bg-slate-800/50 transition-all ${openFaq === idx ? 'rotate-180 bg-brand-500 text-white shadow-lg shadow-brand-500/20' : 'text-gray-400'}`}>
-                  <ChevronDown size={20} />
-                </div>
+                <span className="text-lg font-semibold text-slate-800 dark:text-slate-200 group-hover:text-indigo-600 transition-colors">{faq.q}</span>
+                <ChevronDown size={20} className={`text-slate-400 transition-transform duration-700 ${openFaq === idx ? 'rotate-180 text-brand-500' : ''}`} />
               </button>
               {openFaq === idx && (
-                <div className="px-8 pb-8 animate-in slide-in-from-top-4 duration-500">
-                  <div className="pt-4 border-t border-gray-100 dark:border-slate-800/50 text-gray-500 dark:text-gray-500 text-base leading-relaxed font-bold">
+                <div className="px-10 pb-8 animate-reveal bg-white dark:bg-slate-950/60 border-t border-slate-50 dark:border-white/5">
+                  <p className="pt-6 text-base text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
                     {faq.a}
-                  </div>
+                  </p>
                 </div>
               )}
             </div>
@@ -208,16 +216,30 @@ const Dashboard = () => {
         </div>
       </section>
 
-      {/* Footer CTA */}
-      <section className="px-4 text-center py-32 relative overflow-hidden">
-         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-500/20 blur-[100px] rounded-full -z-10"></div>
-         <h3 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white tracking-tighter mb-8">Ready to start shortening?</h3>
-         <Link to="/links" className="inline-block scale-110">
-            <Button size="xl" icon={Zap} className="rounded-3xl px-16 shadow-2xl shadow-brand-500/30">Join the Pro Experience</Button>
-         </Link>
+      {/* CTA Section */}
+      <section className="section-container">
+         <div className="relative overflow-hidden bg-slate-950 rounded-[4rem] p-20 md:p-32 text-center animate-reveal">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-600/20 blur-[150px] rounded-full animate-mesh"></div>
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-500/10 blur-[120px] rounded-full animate-mesh" style={{ animationDelay: '-5s' }}></div>
+            
+            <div className="relative z-10 space-y-12 max-w-3xl mx-auto font-sans">
+               <h2 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.1] animate-reveal delay-100">Build trackable links in seconds, not days.</h2>
+               <div className="flex flex-col sm:flex-row items-center justify-center gap-8 animate-reveal delay-200">
+                  <Link to="/links" className="w-full sm:w-auto">
+                    <Button size="lg" className="w-full px-16 py-8 text-lg font-extrabold bg-white text-slate-950 hover:bg-slate-100 rounded-2xl shadow-2xl hover:scale-105 active:scale-95 transition-all">
+                       Start for Free
+                    </Button>
+                  </Link>
+                  <Button variant="secondary" size="lg" className="w-full sm:w-auto px-12 py-8 text-lg text-white/70 hover:text-white rounded-2xl hover:bg-white/5">
+                     Contact Sales
+                  </Button>
+               </div>
+            </div>
+         </div>
       </section>
     </div>
   );
 };
 
 export default Dashboard;
+
