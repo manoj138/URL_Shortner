@@ -6,7 +6,6 @@ import Card from "../../../components/common/Card";
 import Badge from "../../../components/common/Badge";
 import EmptyState from "../../../components/common/EmptyState";
 import ConfirmModal from "../../../components/common/ConfirmModal";
-import Urlindex from "./Urlindex";
 import { Trash2, ExternalLink, Link as LinkIcon, BarChart3, Clock, MousePointer2, TrendingUp, Calendar, Link2 } from "lucide-react";
 
 const Urltables = () => {
@@ -51,7 +50,7 @@ const Urltables = () => {
     setIsDeleting(true);
     try {
       await Api.delete(`/url/${selectedId}`);
-      fetchUrls(); // refresh table
+      await fetchUrls();
       setIsDeleteModalOpen(false);
     } catch (error) {
       handleApiError(error);
@@ -76,7 +75,7 @@ const Urltables = () => {
   // Table columns
   const columns = [
     {
-      header: "Link Info",
+      header: "Old URL",
       accessor: "originalUrl",
       render: (val, row) => (
         <div className="flex flex-col gap-1 max-w-xs md:max-w-md">
@@ -92,17 +91,17 @@ const Urltables = () => {
       )
     },
     {
-      header: "Short Code",
+      header: "New URL",
       accessor: "shortCode",
       render: (val) => {
         const shortUrl = `${BASE_URL}/${val}`;
         return (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 min-w-[180px]">
             <a 
               href={shortUrl} 
               target="_blank" 
               rel="noreferrer"
-              className="px-2 py-1 rounded bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 font-medium hover:bg-brand-100 dark:hover:bg-brand-900/50 transition-colors flex items-center gap-1.5"
+              className="px-3 py-2 rounded-xl bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 font-medium hover:bg-brand-100 dark:hover:bg-brand-900/50 transition-colors flex items-center gap-1.5"
             >
               {val}
               <ExternalLink size={12} />
@@ -141,14 +140,14 @@ const Urltables = () => {
     <div className="space-y-12 animate-in fade-in slide-in-from-bottom-8 duration-1000">
       {/* Page Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-        <div className="space-y-2">
-          <h2 className="text-3xl font-black text-gray-900 dark:text-white tracking-tight">
-            Link <span className="text-gradient">Manager</span>
-          </h2>
-          <p className="text-gray-500 dark:text-gray-400 font-medium">
-            Monitor clicks, manage redirects, and analyze performance.
-          </p>
-        </div>
+      <div className="space-y-2">
+        <h2 className="text-3xl font-black text-gray-900 dark:text-white tracking-tight">
+            My <span className="text-gradient">Links</span>
+        </h2>
+        <p className="text-gray-500 dark:text-gray-400 font-medium">
+            Review old URLs, open short links, and delete entries when needed.
+        </p>
+      </div>
         <div className="flex items-center gap-3">
           <div className="px-4 py-2 rounded-2xl bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 shadow-sm flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
@@ -186,11 +185,11 @@ const Urltables = () => {
       {/* Table Section */}
       <Card 
         className="glass border-none shadow-premium overflow-visible"
-        title="Active URL Repository" 
-        subtitle="A detailed breakdown of all your active links"
+        title="URL History" 
+        subtitle="Old URLs, generated short URLs, clicks, and quick actions in one place."
         headerAction={
           <div className="flex gap-2">
-             <Button variant="secondary" size="sm" icon={LinkIcon}>Export CSV</Button>
+             <Button variant="secondary" size="sm" icon={BarChart3}>Live View</Button>
           </div>
         }
       >
@@ -214,9 +213,9 @@ const Urltables = () => {
         onClose={() => setIsDeleteModalOpen(false)}
         onConfirm={handleDelete}
         isLoading={isDeleting}
-        title="Archive this link?"
-        message="This action will permanently disable the redirect and remove all associated click data."
-        confirmText="Yes, Proceed"
+        title="Delete this URL?"
+        message="This will remove the short link and its click history permanently."
+        confirmText="Delete URL"
       />
     </div>
   );

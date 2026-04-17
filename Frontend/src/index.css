@@ -101,7 +101,7 @@
   }
 
   .card-premium {
-    @apply glass rounded-3xl p-6 border border-white/40 dark:border-slate-800/50 hover:border-brand-500/30 transition-all duration-500;
+    @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-3xl p-6 border border-white/40 dark:border-slate-800/50 shadow-sm hover:border-brand-500/30 transition-all duration-500;
   }
 
   .animate-float {

@@ -42,7 +42,7 @@ const Table = ({
                     className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300"
                   >
                     {col.render
-                      ? col.render(row[col.accessor], rowIdx, row)
+                      ? col.render(row[col.accessor], row, rowIdx)
                       : row[col.accessor]}
                   </td>
                 ))}

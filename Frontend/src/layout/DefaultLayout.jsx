@@ -3,12 +3,12 @@ import Navbar from "../pages/backend/Navbar";
 
 const DefaultLayout = ({ children }) => {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-surface-dark transition-colors duration-300">
+    <div className="flex flex-col min-h-screen overflow-x-hidden bg-gray-50 dark:bg-surface-dark transition-colors duration-300">
       {/* Navbar - Sticky Top */}
       <Navbar />
 
       {/* Main content area */}
-      <main className="flex-1 overflow-y-auto scroll-smooth">
+      <main className="flex-1 overflow-y-auto overflow-x-hidden scroll-smooth">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
           {children}
         </div>

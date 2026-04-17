@@ -4,7 +4,6 @@ import { Link2, Send, Copy, Check } from "lucide-react";
 import Button from "../../../components/common/Button";
 import Card from "../../../components/common/Card";
 import { Api, handleApiError } from "../../../components/common/Api/api";
-import Urltables from "./Urltables";
 
 const Urlindex = () => {
   const [originUrl, setOriginUrl] = useState({
@@ -48,7 +47,7 @@ const Urlindex = () => {
       <Card 
         className="card-premium !bg-white/40 dark:!bg-slate-900/40"
         title="Quick Shortener"
-        subtitle="Transform any long URL into a trackable short link."
+        subtitle="Transform any long URL into a trackable short link in a single step."
         headerAction={
           <div className="p-2 rounded-xl bg-brand-500 text-white animate-pulse">
             <Send size={18} />
