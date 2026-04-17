@@ -43,7 +43,7 @@ const Urlindex = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="w-full">
       <Card 
         variant="premium"
         className="overflow-visible relative !bg-white/95 dark:!bg-slate-950/90 !rounded-[4rem]"
