@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Table from "../../../components/common/Table";
-import { Api, handleApiError } from "../../../components/common/Api/api";
+import { Api, BASE_URL, handleApiError } from "../../../components/common/Api/api";
 import Button from "../../../components/common/Button";
 
 const Urltables = () => {
@@ -40,7 +40,7 @@ const Urltables = () => {
       header: "Short URL",
       accessor: "shortCode",
       render: (val) => {
-        const shortUrl = `http://localhost:4000/${val}`;
+        const shortUrl = `${BASE_URL}/${val}`;
         return (
           <a href={shortUrl} target="_blank" rel="noreferrer">
             {shortUrl}
