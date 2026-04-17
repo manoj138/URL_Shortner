@@ -10,7 +10,5 @@ router.get("/", UrlController.getAllUrls);
 // 🔹 delete (by id)
 router.delete("/:id", UrlController.deleteUrl);
 
-// 🔹 redirect (ALWAYS LAST 🔥)
-router.get("/:shortCode", UrlController.redirectUrl);
 
 module.exports = router;

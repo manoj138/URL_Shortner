@@ -11,8 +11,10 @@ const {connectMongoDB} = require("./src/config/mongoDB");
 connectMongoDB()
 
 const UrlRoutes  = require('./src/routes/UrlRoutes');
+const UrlController = require('./src/controllers/UrlController');
 
 app.use("/api/url", UrlRoutes);
+app.get("/:shortCode", UrlController.redirectUrl);
 
 app.get('/', (req, res) => {
   res.send('Hello World! Express server is running.');
