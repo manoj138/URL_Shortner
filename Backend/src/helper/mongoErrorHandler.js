@@ -67,6 +67,18 @@ const handle404 = (res, message = "Resource not found") => {
 };
 
 /**
+ * 400 Bad Request
+ */
+const handle400 = (res, message = "Bad request") => {
+  return res.status(400).json({
+    status: false,
+    errors: {
+      request: message
+    }
+  });
+};
+
+/**
  * 401 Unauthorized
  */
 const handle401 = (res, message = "Session expired, please login again") => {
@@ -104,6 +116,7 @@ const handle500 = (res, error) => {
 
 module.exports = {
   formatMongoError,
+  handle400,
   handle404,
   handle401,
   handle422,
