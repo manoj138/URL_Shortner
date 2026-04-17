@@ -23,12 +23,11 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="space-y-32 pb-32">
+    <div className="space-y-32 pb-32 overflow-x-clip">
       {/* Hero Section - Pro Focus */}
-      <section className="relative pt-16 pb-8 overflow-hidden">
-        <div className="absolute inset-0 bg-mesh animate-mesh -z-10 opacity-40"></div>
+      <section className="relative pt-16 pb-8">
         
-        <div className="section-container text-center space-y-12">
+        <div className="section-container text-center space-y-12 relative z-10">
           <div className="space-y-6">
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1] animate-reveal delay-100 italic">
@@ -42,7 +41,7 @@ const Dashboard = () => {
           </div>
 
           {/* Core Action Tool */}
-          <div className="max-w-6xl mx-auto relative group animate-reveal delay-300">
+          <div className="w-full max-w-6xl mx-auto px-4 relative group animate-reveal delay-300">
             <div className="absolute -inset-8 bg-linear-to-r from-indigo-500/10 via-brand-500/10 to-indigo-500/10 blur-3xl rounded-[3rem] opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
             <Urlindex />
           </div>

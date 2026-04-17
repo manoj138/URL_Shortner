@@ -4,10 +4,9 @@ import { Github, Twitter, Linkedin, Zap } from 'lucide-react';
 
 const DefaultLayout = ({ children }) => {
   return (
-    <div className="min-h-screen flex flex-col bg-mesh relative overflow-x-hidden transition-colors duration-500 selection:bg-accent-500/30">
+    <div className="min-h-screen flex flex-col bg-mesh animate-mesh relative overflow-x-hidden transition-colors duration-500 selection:bg-accent-500/30">
       {/* Background patterns */}
       <div className="fixed inset-0 bg-slate-50 dark:bg-slate-950 -z-20 transition-colors duration-500"></div>
-      <div className="fixed top-0 left-0 w-full h-full bg-[radial-gradient(#4f46e5_1.5px,transparent_1.5px)] [background-size:60px_60px] opacity-[0.04] dark:opacity-[0.06] -z-10"></div>
       
       <Navbar />
 

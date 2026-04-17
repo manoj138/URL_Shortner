@@ -96,6 +96,10 @@
     @apply bg-white/70 dark:bg-slate-900/40 backdrop-blur-2xl border border-white/40 dark:border-white/5 shadow-xl transition-all duration-500;
   }
 
+  .section-container {
+    @apply w-full max-w-7xl mx-auto px-4 md:px-8;
+  }
+  
   .glass-morphism {
     @apply bg-white/30 dark:bg-black/40 backdrop-blur-xl border border-white/20 dark:border-slate-800/50;
   }
