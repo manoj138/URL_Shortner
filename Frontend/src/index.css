@@ -85,14 +85,31 @@
 
 @layer utilities {
   .glass {
-    @apply bg-white/70 dark:bg-black/70 backdrop-blur-md border border-white/20 dark:border-white/10;
+    @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-sm transition-all duration-300;
   }
   
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-linear-to-r from-brand-500 to-indigo-600;
+    @apply bg-clip-text text-transparent bg-linear-to-tr from-brand-600 via-indigo-600 to-purple-600;
+  }
+
+  .bg-gradient-premium {
+    @apply bg-linear-to-tr from-brand-50 via-white to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-brand-950/20;
   }
 
   .shadow-premium {
-    @apply shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)];
+    @apply shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:shadow-[0_20px_50px_rgb(0,0,0,0.3)] hover:shadow-[0_20px_60px_rgb(0,0,0,0.1)] dark:hover:shadow-[0_20px_60px_rgb(0,0,0,0.5)] transition-shadow duration-500;
+  }
+
+  .card-premium {
+    @apply glass rounded-3xl p-6 border border-white/40 dark:border-slate-800/50 hover:border-brand-500/30 transition-all duration-500;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
   }
 }

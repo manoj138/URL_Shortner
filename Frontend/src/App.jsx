@@ -6,13 +6,9 @@ import DefaultRoutes from "./routes/DefaultRoutes";
 
 function App() {
   return (
-  
-      <ToastProvider>
-       <BrowserRouter>
-       <DefaultRoutes/>
-       </BrowserRouter>
-      </ToastProvider>
-  
+    <BrowserRouter>
+      <DefaultRoutes />
+    </BrowserRouter>
   );
 }
 
