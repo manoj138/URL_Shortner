@@ -28,7 +28,7 @@ const createShortUrl = async (req, res) => {
             shortCode
         })
 
-        const shortUrl = `${process.env.BASE_URL}/${shortCode}`;
+        const shortUrl = `${process.env.BASE_URL}/api/url/${shortCode}`;
 
         return handle201(res, shortUrl, "short  url genrated")
 

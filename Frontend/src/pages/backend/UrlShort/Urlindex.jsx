@@ -50,7 +50,9 @@ const [originUrl, setOriginUrl] = useState({
       </form>
 
       <div >
-        {shortUrl}
+       <a href={shortUrl} target="_blank" rel="noreferrer">
+  {shortUrl}
+</a>
       </div>
     </div>
   );
