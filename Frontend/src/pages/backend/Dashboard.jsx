@@ -30,17 +30,12 @@ const Dashboard = () => {
         
         <div className="section-container text-center space-y-12">
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-white/5 text-[10px] font-bold uppercase tracking-widest text-slate-600 dark:text-slate-400 animate-reveal">
-               <span className="flex h-2 w-2 rounded-full bg-indigo-500 animate-pulse"></span>
-               Enterprise URL Management
-            </div>
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1] animate-reveal delay-100 italic">
-              Shorten links.<br />
-              <span className="text-brand-600 drop-shadow-sm">Measure impact.</span>
+              Shorten <span className="text-brand-600 drop-shadow-sm">Share.</span>
             </h1>
             
-            <p className="max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed animate-reveal delay-200">
+            <p className="max-w-xl mx-auto text-base text-slate-600 dark:text-slate-400 font-medium leading-relaxed animate-reveal delay-200">
               The professional choice for link management. Build your audience 
               with trackable, branded links that scale with your business.
             </p>
