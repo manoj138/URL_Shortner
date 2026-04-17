@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand Colors - Now Indigo */
-  --color-brand-50: #eef2ff;
-  --color-brand-100: #e0e7ff;
-  --color-brand-200: #c7d2fe;
-  --color-brand-300: #a5b4fc;
-  --color-brand-400: #818cf8;
-  --color-brand-500: #6366f1;
-  --color-brand-600: #4f46e5;
-  --color-brand-700: #4338ca;
-  --color-brand-800: #3730a3;
-  --color-brand-900: #312e81;
-  --color-brand-950: #1e1b4b;
+  /* Brand Colors - Fresh Aqua Mint */
+  --color-brand-50: #e6fff6;
+  --color-brand-100: #ccffed;
+  --color-brand-200: #99ffd6;
+  --color-brand-300: #66ffbf;
+  --color-brand-400: #33ffa8;
+  --color-brand-500: #1dbb7e; /* Main Mint */
+  --color-brand-600: #179665; /* Darker Mint */
+  --color-brand-700: #12714c;
+  --color-brand-800: #0c4c33;
+  --color-brand-900: #06271a;
+  --color-brand-950: #03140d;
 
-  /* Accent Color - Amber Gold */
-  --color-accent-400: #fbbf24;
-  --color-accent-500: #f59e0b;
-  --color-accent-600: #d97706;
-  --color-accent-700: #b45309;
+  /* Accent Color - Soft Aqua */
+  --color-accent-400: #a5f3fc;
+  --color-accent-500: #22d3ee;
+  --color-accent-600: #0891b2;
+  --color-accent-700: #0e7490;
 
   /* Custom Semantic Colors */
   --color-success: #10b981;
@@ -26,11 +26,11 @@
   --color-danger: #ef4444;
   --color-info: #0ea5e9;
 
-  /* Surface Colors - Deep Navy/Slate Slate */
+  /* Surface Colors - Deep Aqua-Teal */
   --color-surface-light: #ffffff;
-  --color-surface-dark: #020617; /* Real Slate 950 */
+  --color-surface-dark: #081c1c; /* Deep Forest/Aqua-Teal */
   --color-surface-card-light: #fafafa;
-  --color-surface-card-dark: #0f172a;
+  --color-surface-card-dark: #0c2424;
 
   /* Border Radii */
   --radius-xs: 0.25rem;
@@ -105,13 +105,13 @@
   }
   
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-linear-to-r from-brand-600 via-indigo-600 to-accent-600 dark:from-brand-400 dark:via-indigo-400 dark:to-accent-400 font-extrabold;
+    @apply bg-clip-text text-transparent bg-linear-to-r from-brand-500 via-mint-500 to-aqua-500 dark:from-brand-400 dark:via-mint-400 dark:to-aqua-400 font-extrabold;
   }
 
   .bg-mesh {
     background-image: 
-      radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.08) 0, transparent 40%),
-      radial-gradient(at 0% 100%, rgba(245, 158, 11, 0.05) 0, transparent 40%);
+      radial-gradient(at 100% 0%, rgba(45, 222, 152, 0.15) 0, transparent 40%),
+      radial-gradient(at 0% 100%, rgba(34, 211, 238, 0.1) 0, transparent 40%);
   }
 
   .shadow-premium {

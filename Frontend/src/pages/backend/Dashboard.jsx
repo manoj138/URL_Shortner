@@ -9,9 +9,9 @@ const Dashboard = () => {
   const [openFaq, setOpenFaq] = useState(null);
 
   const features = [
-    { title: "Instant Redirection", desc: "Shorten and deploy links globally in under 100ms with our edge infrastructure.", icon: Zap, color: "text-indigo-600", bg: "bg-indigo-50 dark:bg-indigo-950/30" },
-    { title: "Advanced Security", desc: "Enterprise-grade protection with HTTPS encryption and safe-link scanning.", icon: Shield, color: "text-brand-600", bg: "bg-brand-50 dark:bg-brand-950/30" },
-    { title: "Real-time Analytics", desc: "Track performance with sub-second latency for clicks, locations, and devices.", icon: BarChart3, color: "text-emerald-600", bg: "bg-emerald-50 dark:bg-emerald-950/30" },
+    { title: "Instant Redirection", desc: "Shorten and deploy links globally in under 100ms with our edge infrastructure.", icon: Zap, color: "text-brand-600", bg: "bg-brand-50 dark:bg-brand-950/30" },
+    { title: "Advanced Security", desc: "Enterprise-grade protection with HTTPS encryption and safe-link scanning.", icon: Shield, color: "text-brand-500", bg: "bg-brand-100 dark:bg-brand-950/30" },
+    { title: "Real-time Analytics", desc: "Track performance with sub-second latency for clicks, locations, and devices.", icon: BarChart3, color: "text-cyan-500", bg: "bg-cyan-50 dark:bg-cyan-950/30" },
     { title: "API First", desc: "Integrate shortening directly into your workflow with our developer-friendly API.", icon: Layers3, color: "text-slate-600", bg: "bg-slate-50 dark:bg-slate-900/50" },
   ];
 
@@ -48,7 +48,7 @@ const Dashboard = () => {
           {/* Social Proof Elements */}
           <div className="pt-12 flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-30 grayscale hover:grayscale-0 hover:opacity-60 transition-all duration-1000 animate-reveal delay-400">
              <div className="flex items-center gap-2 font-bold text-xl animate-float">TRUSTED LABS</div>
-             <div className="flex items-center gap-2 font-bold text-xl tracking-tighter uppercase underline decoration-indigo-500 animate-float" style={{ animationDelay: '-1s' }}>Global Analytics</div>
+             <div className="flex items-center gap-2 font-bold text-xl tracking-tighter uppercase underline decoration-brand-500 animate-float" style={{ animationDelay: '-1s' }}>Global Analytics</div>
              <div className="flex items-center gap-2 font-bold text-xl italic animate-float" style={{ animationDelay: '-2s' }}>DataFlow</div>
           </div>
         </div>
@@ -63,12 +63,12 @@ const Dashboard = () => {
             { label: "Average Latency", value: "<85ms", icon: Rocket, suffix: "Edge" },
             { label: "Uptime SLA", value: "99.98%", icon: Shield, suffix: "Guaranteed" },
           ].map((stat, i) => (
-            <div key={i} className={`card-premium group hover:border-indigo-500/30 font-sans animate-reveal delay-${(i+1)*100}`}>
+            <div key={i} className={`card-premium group hover:border-brand-500/30 font-sans animate-reveal delay-${(i+1)*100}`}>
                <div className="flex justify-between items-start mb-4">
-                  <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-500 group-hover:bg-indigo-600 group-hover:text-white group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
+                  <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-500 group-hover:bg-brand-600 group-hover:text-white group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
                     <stat.icon size={22} strokeWidth={2.5} />
                   </div>
-                  <span className="text-[10px] font-bold text-emerald-500 bg-emerald-50 dark:bg-emerald-500/10 px-2 py-0.5 rounded-full animate-pulse">
+                  <span className="text-[10px] font-bold text-brand-500 bg-brand-50 dark:bg-brand-500/10 px-2 py-0.5 rounded-full animate-pulse">
                     {stat.suffix}
                   </span>
                </div>
@@ -96,7 +96,7 @@ const Dashboard = () => {
                  <feature.icon size={30} className="relative z-10" />
                </div>
                <div className="space-y-3">
-                  <h3 className="text-xl font-extrabold text-slate-900 dark:text-white tracking-tight group-hover:text-indigo-600 transition-colors">{feature.title}</h3>
+                  <h3 className="text-xl font-extrabold text-slate-900 dark:text-white tracking-tight group-hover:text-brand-500 transition-colors">{feature.title}</h3>
                   <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
                     {feature.desc}
                   </p>
@@ -112,10 +112,10 @@ const Dashboard = () => {
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] gap-2 items-stretch font-sans">
                {/* Left Context */}
                <div className="p-10 md:p-16 bg-white dark:bg-slate-900 rounded-[2rem] flex flex-col justify-between relative">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 blur-[100px] rounded-full animate-float"></div>
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-brand-500/5 blur-[100px] rounded-full animate-float"></div>
                   <div className="space-y-20 relative z-10">
                     <div className="space-y-6">
-                       <p className="text-xs font-bold uppercase tracking-widest text-indigo-600 animate-reveal">Enterprise Ready</p>
+                       <p className="text-xs font-bold uppercase tracking-widest text-brand-600 animate-reveal">Enterprise Ready</p>
                        <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-[1.1] tracking-tight animate-reveal delay-100">Streamlined for teams <br/>and impact.</h2>
                     </div>
 
@@ -127,7 +127,7 @@ const Dashboard = () => {
                          "Role-based access for large teams"
                        ].map((item, i) => (
                           <div key={i} className={`flex items-center gap-4 text-slate-600 dark:text-slate-400 font-medium group animate-reveal delay-${(i+1)*100}`}>
-                             <div className="w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 flex items-center justify-center shrink-0 group-hover:scale-125 transition-transform">
+                             <div className="w-6 h-6 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-600 flex items-center justify-center shrink-0 group-hover:scale-125 transition-transform">
                                 <CheckCircle2 size={14} strokeWidth={3} />
                              </div>
                              <span className="text-sm group-hover:text-slate-950 dark:group-hover:text-white transition-colors">{item}</span>
@@ -159,7 +159,7 @@ const Dashboard = () => {
                         <div className="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-between hover:bg-white/20 transition-colors">
                            <span className="text-sm font-semibold opacity-60">Uptime</span>
                            <span className="font-bold flex items-center gap-2">
-                             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                             <span className="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span>
                              99.98%
                            </span>
                         </div>
@@ -194,7 +194,7 @@ const Dashboard = () => {
                 onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
                 className="w-full px-10 py-7 flex items-center justify-between text-left group bg-white dark:bg-slate-950/60"
               >
-                <span className="text-lg font-semibold text-slate-800 dark:text-slate-200 group-hover:text-indigo-600 transition-colors">{faq.q}</span>
+                <span className="text-lg font-semibold text-slate-800 dark:text-slate-200 group-hover:text-brand-500 transition-colors">{faq.q}</span>
                 <ChevronDown size={20} className={`text-slate-400 transition-transform duration-700 ${openFaq === idx ? 'rotate-180 text-brand-500' : ''}`} />
               </button>
               {openFaq === idx && (
@@ -213,7 +213,7 @@ const Dashboard = () => {
       <section className="section-container">
          <div className="relative overflow-hidden bg-slate-950 rounded-[4rem] p-20 md:p-32 text-center animate-reveal">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-600/20 blur-[150px] rounded-full animate-mesh"></div>
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-500/10 blur-[120px] rounded-full animate-mesh" style={{ animationDelay: '-5s' }}></div>
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-400/10 blur-[120px] rounded-full animate-mesh" style={{ animationDelay: '-5s' }}></div>
             
             <div className="relative z-10 space-y-12 max-w-3xl mx-auto font-sans">
                <h2 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.1] animate-reveal delay-100">Build trackable links in seconds, not days.</h2>

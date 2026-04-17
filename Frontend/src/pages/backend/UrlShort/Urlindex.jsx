@@ -72,7 +72,7 @@ const Urlindex = () => {
                 type="url"
                 onChange={inputHandler}
                 required
-                className="group-hover:border-indigo-500/50 transition-all text-base px-6 rounded-xl bg-white dark:bg-slate-900 shadow-sm border-slate-200 dark:border-white/5 h-14"
+                className="group-hover:border-brand-500/50 transition-all text-base px-6 rounded-xl bg-white dark:bg-slate-900 shadow-sm border-slate-200 dark:border-white/5 h-14"
               />
             </div>
             <Button 
@@ -90,7 +90,7 @@ const Urlindex = () => {
 
         {shortUrl && (
           <div className="mt-8 pt-8 border-t border-slate-100 dark:border-white/5 space-y-4 animate-reveal delay-100 font-sans">
-            <div className="flex flex-col sm:flex-row items-center justify-between p-5 bg-slate-50 dark:bg-slate-950/30 rounded-2xl border border-slate-200 dark:border-white/5 group shadow-sm hover:border-indigo-500/20 transition-all duration-500">
+            <div className="flex flex-col sm:flex-row items-center justify-between p-5 bg-slate-50 dark:bg-slate-950/30 rounded-2xl border border-slate-200 dark:border-white/5 group shadow-sm hover:border-brand-500/20 transition-all duration-500">
               <div className="flex items-center gap-4 overflow-hidden w-full">
                 <div className="p-2.5 rounded-lg bg-white dark:bg-slate-900 text-brand-600 shadow-sm transition-transform group-hover:scale-110 group-hover:rotate-6">
                   <Check size={18} strokeWidth={3} />
@@ -99,7 +99,7 @@ const Urlindex = () => {
                   href={shortUrl} 
                   target="_blank" 
                   rel="noreferrer"
-                  className="text-lg font-bold text-slate-900 dark:text-slate-100 truncate hover:text-indigo-600 transition-all"
+                  className="text-lg font-bold text-slate-900 dark:text-slate-100 truncate hover:text-brand-500 transition-all"
                 >
                   {shortUrl}
                 </a>

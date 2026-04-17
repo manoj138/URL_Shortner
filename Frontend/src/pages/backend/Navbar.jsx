@@ -22,16 +22,16 @@ const Navbar = () => {
     }`}>
       <div className={`w-full max-w-7xl transition-all duration-500 mx-4 sm:mx-6 flex items-center justify-between pointer-events-auto border rounded-2xl px-6 ${
         isScrolled 
-          ? 'h-14 bg-white/90 dark:bg-slate-950/80 backdrop-blur-xl border-slate-200 dark:border-white/5 shadow-2xl shadow-indigo-500/10' 
+          ? 'h-14 bg-white/90 dark:bg-slate-950/80 backdrop-blur-xl border-slate-200 dark:border-white/5 shadow-2xl shadow-brand-500/10' 
           : 'h-16 bg-white/70 dark:bg-slate-900/40 backdrop-blur-md border-white/40 dark:border-white/5'
       }`}>
         {/* Logo - Professional Branding */}
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-600/20 group-hover:rotate-12 transition-all">
+          <div className="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center text-white shadow-lg shadow-brand-600/20 group-hover:rotate-12 transition-all">
             <Zap size={18} fill="white" />
           </div>
           <span className="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            URL<span className="text-indigo-600">ly.</span>
+            URL<span className="text-brand-600">ly.</span>
           </span>
         </Link>
 
@@ -45,7 +45,7 @@ const Navbar = () => {
             <Link 
               key={link.label}
               to={link.path} 
-              className="px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900"
+              className="px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900"
             >
               {link.label}
             </Link>
