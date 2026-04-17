@@ -1,8 +1,11 @@
 import React from 'react'
+import Urlindex from './UrlShort/Urlindex'
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <div>
+      <Urlindex/>
+    </div>
   )
 }
 
