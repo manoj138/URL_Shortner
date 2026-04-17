@@ -20,10 +20,10 @@ const Navbar = () => {
               <Zap size={22} fill="currentColor" />
             </div>
             <div className="flex flex-col">
-                <span className="text-xl font-black tracking-tighter text-gray-900 dark:text-white leading-none">
+                <span className="text-2xl font-black tracking-tighter text-gray-900 dark:text-white leading-none">
                 URLly
                 </span>
-                <span className="text-[10px] font-bold text-brand-500 uppercase tracking-widest leading-none mt-1">
+                <span className="text-xs font-bold text-brand-500 uppercase tracking-widest leading-none mt-1">
                 Premium
                 </span>
             </div>
@@ -35,7 +35,7 @@ const Navbar = () => {
                 key={link.name}
                 to={link.path}
                 className={({ isActive }) =>
-                  `flex items-center gap-2 px-5 py-2.5 rounded-2xl text-sm font-bold transition-all duration-300 ${
+                  `flex items-center gap-2 px-5 py-2.5 rounded-2xl text-base font-bold transition-all duration-300 ${
                     isActive
                       ? 'bg-brand-500 text-white shadow-lg shadow-brand-500/20'
                       : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-slate-800/50'
@@ -61,10 +61,10 @@ const Navbar = () => {
           
           <div className="flex items-center gap-3 pl-1">
             <div className="text-right hidden lg:block mr-1">
-              <p className="text-sm font-black text-gray-900 dark:text-gray-100 leading-none">Manoj Chougule</p>
-              <div className="flex items-center justify-end gap-1 mt-1">
-                <Sparkles size={10} className="text-amber-500" />
-                <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">PRO Member</span>
+              <p className="text-base font-black text-gray-900 dark:text-gray-100 leading-none">Manoj Chougule</p>
+              <div className="flex items-center justify-end gap-1 mt-1.5">
+                <Sparkles size={11} className="text-amber-500" />
+                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">PRO Member</span>
               </div>
             </div>
             <Avatar 
