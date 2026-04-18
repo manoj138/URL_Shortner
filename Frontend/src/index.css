@@ -105,13 +105,15 @@
   }
   
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-linear-to-r from-brand-500 via-mint-500 to-aqua-500 dark:from-brand-400 dark:via-mint-400 dark:to-aqua-400 font-extrabold;
+    @apply bg-clip-text text-transparent bg-linear-to-r from-brand-500 via-brand-400 to-accent-500 dark:from-brand-400 dark:via-brand-300 dark:to-accent-400 font-extrabold;
   }
 
   .bg-mesh {
     background-image: 
-      radial-gradient(at 100% 0%, rgba(45, 222, 152, 0.15) 0, transparent 40%),
-      radial-gradient(at 0% 100%, rgba(34, 211, 238, 0.1) 0, transparent 40%);
+      radial-gradient(at 50% -20%, rgba(45, 222, 152, 0.25) 0, transparent 70%),
+      radial-gradient(at 50% 120%, rgba(34, 211, 238, 0.15) 0, transparent 70%),
+      radial-gradient(at 100% 50%, rgba(45, 222, 152, 0.05) 0, transparent 40%),
+      radial-gradient(at 0% 50%, rgba(34, 211, 238, 0.05) 0, transparent 40%);
   }
 
   .shadow-premium {

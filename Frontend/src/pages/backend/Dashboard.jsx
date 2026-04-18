@@ -58,12 +58,17 @@ const Dashboard = () => {
       <section className="section-container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { label: "Active Nodes", value: "142", icon: Globe, suffix: "Global" },
-            { label: "Daily Redirects", value: "24M+", icon: Zap, suffix: "+12%" },
-            { label: "Average Latency", value: "<85ms", icon: Rocket, suffix: "Edge" },
-            { label: "Uptime SLA", value: "99.98%", icon: Shield, suffix: "Guaranteed" },
+            { label: "Active Nodes", value: "142", icon: Globe, suffix: "Global", theme: "brand" },
+            { label: "Daily Redirects", value: "24M+", icon: Zap, suffix: "+12%", theme: "indigo" },
+            { label: "Average Latency", value: "<85ms", icon: Rocket, suffix: "Edge", theme: "emerald" },
+            { label: "Uptime SLA", value: "99.98%", icon: Shield, suffix: "Guaranteed", theme: "amber" },
           ].map((stat, i) => (
-            <div key={i} className={`card-premium group hover:border-brand-500/30 font-sans animate-reveal delay-${(i+1)*100}`}>
+            <Card 
+              key={i} 
+              bubbleTheme={stat.theme}
+              className={`hover:border-brand-500/30 font-sans animate-reveal delay-${(i+1)*100}`}
+              compact
+            >
                <div className="flex justify-between items-start mb-4">
                   <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-500 group-hover:bg-brand-600 group-hover:text-white group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
                     <stat.icon size={22} strokeWidth={2.5} />
@@ -76,7 +81,7 @@ const Dashboard = () => {
                   <h3 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">{stat.value}</h3>
                   <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">{stat.label}</p>
                </div>
-            </div>
+            </Card>
           ))}
         </div>
       </section>

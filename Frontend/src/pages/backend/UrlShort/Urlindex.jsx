@@ -47,8 +47,6 @@ const Urlindex = () => {
       <Card 
         variant="premium"
         compact
-        className="overflow-visible relative !bg-white/95 dark:!bg-slate-950/90 !rounded-[2.5rem]"
-        bodyClassName="!px-8 !py-6 md:!px-12 md:!py-8"
       >
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 animate-reveal">
            <div className="space-y-1">
