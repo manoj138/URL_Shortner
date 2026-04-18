@@ -1,12 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Zap, BarChart3, Rocket, Shield, Globe, ChevronDown, MousePointer2, Layers3, Sparkles, ArrowRight, TrendingUp, Link2, CheckCircle2 } from 'lucide-react';
 import Button from '../../components/common/Button';
 import Card from '../../components/common/Card';
 import Urlindex from './UrlShort/Urlindex';
+import { Api } from '../../components/common/Api/api';
 
 const Dashboard = () => {
   const [openFaq, setOpenFaq] = useState(null);
+  const [stats, setStats] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const res = await Api.get('/url/stats');
+        setStats(res.data.data);
+      } catch (error) {
+        console.error("Failed to fetch stats:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchStats();
+  }, []);
 
   const features = [
     { title: "Instant Redirection", desc: "Shorten and deploy links globally in under 100ms with our edge infrastructure.", icon: Zap, color: "text-brand-600", bg: "bg-brand-50 dark:bg-brand-950/30" },
@@ -22,21 +39,31 @@ const Dashboard = () => {
     { q: "Is the analytics tracking real-time?", a: "Absolutely. Click data is processed and reflected in your analytics dashboard within milliseconds." },
   ];
 
+  const defaultStats = [
+    { label: "Active Nodes", value: "0", icon: Globe, suffix: "Global", theme: "brand" },
+    { label: "Total Redirects", value: "0", icon: Zap, suffix: "Live", theme: "indigo" },
+    { label: "Average Latency", value: "<45ms", icon: Rocket, suffix: "Edge", theme: "emerald" },
+    { label: "Uptime SLA", value: "99.99%", icon: Shield, suffix: "Guaranteed", theme: "amber" },
+  ];
+
+  const displayStats = stats.length > 0 ? stats : defaultStats;
+  const iconMap = { Globe, Zap, Rocket, Shield };
+
   return (
     <div className="space-y-32 pb-32 overflow-x-clip">
-      {/* Hero Section - Pro Focus */}
-      <section className="relative pt-16 pb-8">
+      {/* Hero Section - Unified with Landing Page */}
+      <section className="relative pt-16 pb-8 overflow-hidden">
         
-        <div className="section-container text-center space-y-12 relative z-10">
-          <div className="space-y-6">
+        <div className="section-container text-center space-y-12 relative z-10 px-4">
+          <div className="space-y-8">
             
-            <h1 className="text-4xl md:text-6xl lg:text-8xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.05] animate-reveal delay-100 italic">
-              Shorten <span className="text-brand-600 drop-shadow-sm">Share.</span>
+            <h1 className="text-5xl md:text-7xl lg:text-7xl font-extrabold tracking-tighter text-slate-900 dark:text-white leading-[0.95] animate-reveal delay-100 italic">
+               The URL <span className="text-brand-600 drop-shadow-[0_10px_30px_rgba(99,102,241,0.2)]">Powerhouse.</span>
             </h1>
             
             <p className="max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed animate-reveal delay-200">
-              The professional choice for link management. Build your audience 
-              with trackable, branded links that scale with your business.
+               Manage your infrastructure and track your impact in real-time. 
+               All your links and analytics unified into one powerful dashboard.
             </p>
           </div>
 
@@ -57,36 +84,35 @@ const Dashboard = () => {
       {/* Analytics Snapshot - LIVING Professional Section */}
       <section className="section-container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { label: "Active Nodes", value: "142", icon: Globe, suffix: "Global", theme: "brand" },
-            { label: "Daily Redirects", value: "24M+", icon: Zap, suffix: "+12%", theme: "indigo" },
-            { label: "Average Latency", value: "<85ms", icon: Rocket, suffix: "Edge", theme: "emerald" },
-            { label: "Uptime SLA", value: "99.98%", icon: Shield, suffix: "Guaranteed", theme: "amber" },
-          ].map((stat, i) => (
-            <Card 
-              key={i} 
-              bubbleTheme={stat.theme}
-              className={`hover:border-brand-500/30 font-sans animate-reveal delay-${(i+1)*100}`}
-              compact
-            >
-               <div className="flex justify-between items-start mb-4">
-                  <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-500 group-hover:bg-brand-600 group-hover:text-white group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
-                    <stat.icon size={22} strokeWidth={2.5} />
-                  </div>
-                  <span className="text-[10px] font-bold text-brand-500 bg-brand-50 dark:bg-brand-500/10 px-2 py-0.5 rounded-full animate-pulse">
-                    {stat.suffix}
-                  </span>
-               </div>
-               <div className="space-y-0.5">
-                  <h3 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">{stat.value}</h3>
-                  <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">{stat.label}</p>
-               </div>
-            </Card>
-          ))}
+          {displayStats.map((stat, i) => {
+            const IconComponent = iconMap[stat.icon] || Globe;
+            return (
+              <Card 
+                key={i} 
+                bubbleTheme={stat.theme}
+                className={`hover:border-brand-500/30 font-sans animate-reveal delay-${(i+1)*100}`}
+                compact
+                showParticles={i === 1} // Add some dynamic flair to the primary stat card
+              >
+                 <div className="flex justify-between items-start mb-4">
+                    <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-500 group-hover:bg-brand-600 group-hover:text-white group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
+                      <IconComponent size={22} strokeWidth={2.5} />
+                    </div>
+                    <span className="text-[10px] font-bold text-brand-500 bg-brand-50 dark:bg-brand-500/10 px-2 py-0.5 rounded-full animate-pulse">
+                      {stat.suffix}
+                    </span>
+                 </div>
+                 <div className="space-y-0.5">
+                    <h3 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">{stat.value}</h3>
+                    <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">{stat.label}</p>
+                 </div>
+              </Card>
+            );
+          })}
         </div>
       </section>
 
-      {/* Feature Grid - Crisp & Clean */}
+      {/* Feature Grid - Crisp & Clean (Unified with Landing) */}
       <section className="section-container space-y-20">
         <div className="text-center space-y-4 animate-reveal">
           <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">Built for modern workflows.</h2>
@@ -101,7 +127,7 @@ const Dashboard = () => {
               className={`space-y-6 group animate-reveal delay-${(i+1)*100}`}
               hoverable
             >
-               <div className={`w-16 h-16 rounded-[1.5rem] ${feature.bg} ${feature.color} flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 relative overflow-hidden`}>
+               <div className={`w-16 h-16 rounded-[1.5rem] ${feature.bg} ${feature.color} flex items-center justify-center group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 relative overflow-hidden`}>
                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700"></div>
                  <feature.icon size={30} className="relative z-10" />
                </div>
@@ -116,7 +142,7 @@ const Dashboard = () => {
         </div>
       </section>
 
-      {/* Product Highlight - Pro Split */}
+      {/* Product Highlight - Pro Split (Unified with Landing) */}
       <section className="section-container">
          <div className="card-premium !p-2 border-slate-200/50 dark:border-white/5 bg-white/5 dark:bg-white/5 backdrop-blur-3xl overflow-hidden animate-reveal">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] gap-2 items-stretch font-sans">
@@ -182,7 +208,7 @@ const Dashboard = () => {
 
                   <Link to="/links" className="relative z-10">
                     <Button variant="glass" size="lg" className="w-full !bg-white !text-brand-700 shadow-2xl font-extrabold hover:scale-[1.02] active:scale-[0.98]">
-                       Get Started Now
+                       My Analytics
                     </Button>
                   </Link>
                </div>
@@ -190,7 +216,7 @@ const Dashboard = () => {
          </div>
       </section>
 
-      {/* FAQ Section - Clean */}
+      {/* FAQ Section - Clean (Unified with Landing) */}
       <section className="section-container max-w-4xl mx-auto space-y-16">
         <div className="text-center space-y-2 animate-reveal">
           <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">Frequently Asked.</h2>
@@ -202,7 +228,7 @@ const Dashboard = () => {
             <Card 
               key={idx} 
               bubbleTheme={['indigo', 'brand', 'teal', 'violet'][idx % 4]}
-              className={`overflow-hidden hover:border-brand-500/30 transition-all duration-500 shadow-sm animate-reveal delay-${idx*100}`}
+              className={`overflow-hidden hover:border-brand-500/30 transition-all duration-500 animate-reveal delay-${idx*100}`}
               noPadding
             >
               <button 
@@ -224,24 +250,25 @@ const Dashboard = () => {
         </div>
       </section>
 
-      {/* CTA Section - Professional Card Integration */}
+      {/* CTA Section - Unified with Landing */}
       <section className="section-container">
          <Card 
             bubbleTheme="sky"
+            showParticles={true}
             className="!rounded-[4rem] animate-reveal border-slate-200/50 dark:border-white/5 overflow-hidden"
             bodyClassName="p-20 md:p-32 text-center"
             noPadding
          >
             <div className="relative z-10 space-y-12 max-w-3xl mx-auto font-sans">
-               <h2 className="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.1] animate-reveal delay-100 italic">Build trackable links in <br/>seconds, not days.</h2>
+               <h2 className="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.1] animate-reveal delay-100 italic px-4">Build trackable links in <br className="hidden sm:block"/>seconds, not days.</h2>
                <div className="flex flex-col sm:flex-row items-center justify-center gap-8 animate-reveal delay-200">
                   <Link to="/links" className="w-full sm:w-auto">
                     <Button size="lg" className="w-full px-16 py-8 text-lg font-extrabold bg-brand-600 text-white hover:bg-brand-700 rounded-2xl shadow-2xl hover:scale-105 active:scale-95 transition-all">
-                       Start for Free
+                       Explore My Links
                     </Button>
                   </Link>
                   <Button variant="secondary" size="lg" className="w-full sm:w-auto px-12 py-8 text-lg text-slate-500 dark:text-white/70 hover:text-slate-900 dark:hover:text-white rounded-2xl hover:bg-slate-100 dark:hover:bg-white/5 border border-slate-200 dark:border-white/10">
-                     Contact Sales
+                     Contact Support
                   </Button>
                </div>
             </div>
@@ -252,4 +279,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-

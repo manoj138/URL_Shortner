@@ -25,6 +25,26 @@ const authenticateToken = (req, res, next) => {
   next();
 };
 
+/**
+ * Optional Authentication Middleware
+ * Checks for JWT token but allows access even if missing
+ */
+const optionalAuthenticateToken = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (!token) {
+    return next();
+  }
+
+  const decoded = verifyToken(token);
+  if (decoded) {
+    req.user = decoded;
+  }
+  next();
+};
+
 module.exports = {
   authenticateToken,
+  optionalAuthenticateToken
 };

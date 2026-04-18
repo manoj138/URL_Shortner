@@ -86,7 +86,7 @@ const Urltables = () => {
             </div>
             <span className="truncate">{val}</span>
           </div>
-          <div className="flex items-center gap-2 text-[10px] font-bold text-slate-400 ml-7 tracking-tight">
+          <div className="hidden sm:flex items-center gap-2 text-[10px] font-bold text-slate-400 ml-7 tracking-tight">
              <Clock size={10} />
              <span>Created {new Date(row.createdAt).toLocaleDateString()}</span>
           </div>

@@ -11,17 +11,17 @@ const Button = ({
   disabled = false,
   ...props 
 }) => {
-  const baseStyles = "inline-flex items-center justify-center font-semibold transition-all duration-300 active:scale-95 disabled:opacity-50 disabled:pointer-events-none select-none font-sans tracking-tight";
+  const baseStyles = "inline-flex items-center justify-center font-semibold transition-all duration-300 active:scale-95 disabled:opacity-50 disabled:pointer-events-none select-none font-sans tracking-tight shadow-[0_8px_20px_rgba(0,0,0,0.1)] dark:shadow-[0_10px_25px_rgba(0,0,0,0.4)] hover:-translate-y-0.5 hover:shadow-[0_15px_40px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_20px_50px_rgba(79,70,229,0.25)]";
   
   const variants = {
-    primary: "bg-brand-600 hover:bg-brand-700 text-white shadow-lg shadow-brand-600/20 hover:-translate-y-0.5",
-    accent: "bg-accent-500 hover:bg-accent-600 text-slate-950 shadow-lg shadow-accent-500/20 hover:-translate-y-0.5",
+    primary: "bg-brand-600 hover:bg-brand-700 text-white shadow-brand-600/20",
+    accent: "bg-accent-500 hover:bg-accent-600 text-slate-950 shadow-accent-500/20",
     secondary: "bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-900 dark:text-white",
     outline: "border-2 border-slate-200 dark:border-slate-800 hover:border-brand-500 dark:hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 text-slate-600 dark:text-slate-300",
-    ghost: "bg-transparent hover:bg-slate-100 dark:hover:bg-slate-900/50 text-slate-600 dark:text-slate-400",
-    success: "bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-600/20",
-    danger: "bg-rose-600 hover:bg-rose-700 text-white shadow-lg shadow-rose-600/20",
-    glass: "bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white",
+    ghost: "bg-transparent hover:bg-slate-100 dark:hover:bg-slate-100 text-slate-600 dark:text-slate-400 !shadow-none hover:shadow-sm",
+    success: "bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-600/20",
+    danger: "bg-rose-600 hover:bg-rose-700 text-white shadow-rose-600/20",
+    glass: "bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white shadow-black/20",
   };
 
   const sizes = {

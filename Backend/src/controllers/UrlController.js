@@ -25,7 +25,8 @@ const createShortUrl = async (req, res) => {
 
         const newUrl = await Url.create({
             originalUrl,
-            shortCode
+            shortCode,
+            userId: req.user?.id
         })
 
         const shortUrl = `${process.env.BASE_URL}/${shortCode}`;
@@ -55,7 +56,7 @@ const redirectUrl = async (req, res) => {
 
 const getAllUrls = async (req, res) => {
     try {
-        const urls = await Url.find().sort({ createdAt: -1 });
+        const urls = await Url.find({ userId: req.user.id }).sort({ createdAt: -1 });
 
         return handle200(res, urls, "All URLs fetched")
 
@@ -68,10 +69,10 @@ const deleteUrl = async (req, res) => {
     try {
         const { id } = req.params;
 
-        const url = await Url.findByIdAndDelete(id);
+        const url = await Url.findOneAndDelete({ _id: id, userId: req.user.id });
 
         if (!url) {
-            return handle404(res, "URL not found");
+            return handle404(res, "URL not found or unauthorized");
         }
         return handle200(res, url, "URL deleted successfully");
 
@@ -80,9 +81,45 @@ const deleteUrl = async (req, res) => {
     }
 };
 
+const getStats = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const totalUrls = await Url.countDocuments({ userId });
+        const urls = await Url.find({ userId });
+        const totalClicks = urls.reduce((acc, url) => acc + (url.clicks || 0), 0);
+        
+        const stats = [
+            { label: "Active Nodes", value: totalUrls.toString(), icon: "Globe", suffix: "User", theme: "brand" },
+            { label: "Total Redirects", value: totalClicks.toString(), icon: "Zap", suffix: "Live", theme: "indigo" },
+            { label: "Health Status", value: "Optimal", icon: "Rocket", suffix: "Edge", theme: "emerald" },
+            { label: "Uptime SLA", value: "99.9%", icon: "Shield", suffix: "Live", theme: "amber" },
+        ];
+
+        return handle200(res, stats, "Dashboard stats fetched");
+    } catch (error) {
+        return formatMongoError(res, error);
+    }
+};
+
+const getPublicStats = async (req, res) => {
+    try {
+        const totalUrls = await Url.countDocuments();
+        const totalUsers = await User.countDocuments();
+        
+        return handle200(res, {
+            totalUrls,
+            totalUsers
+        }, "Public stats fetched");
+    } catch (error) {
+        return formatMongoError(res, error);
+    }
+}
+
 module.exports = {
     createShortUrl,
     redirectUrl,
     getAllUrls,
-    deleteUrl
+    deleteUrl,
+    getStats,
+    getPublicStats
 }

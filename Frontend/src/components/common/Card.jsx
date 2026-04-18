@@ -14,8 +14,18 @@ const Card = ({
   compact = false,
   variant = 'default',
   bubbleTheme = 'brand',
+  showParticles = false,
   ...props 
 }) => {
+  // Particle generator logic
+  const particles = showParticles ? Array.from({ length: 12 }).map((_, i) => ({
+    id: i,
+    top: `${Math.random() * 100}%`,
+    left: `${Math.random() * 100}%`,
+    size: `${Math.random() * 5 + 2}px`,
+    duration: `${Math.random() * 10 + 10}s`,
+    delay: `${Math.random() * 5}s`,
+  })) : [];
   const bubbleThemes = {
     brand: { bg1: 'bg-brand-500/10', bg2: 'bg-cyan-500/10', bg3: 'bg-mint-400/5' },
     indigo: { bg1: 'bg-indigo-500/10', bg2: 'bg-blue-500/10', bg3: 'bg-violet-400/5' },
@@ -40,7 +50,7 @@ const Card = ({
       className={`
         rounded-[2.5rem] border transition-all duration-700 overflow-hidden relative group
         ${variants[variant]} 
-        ${hoverable ? 'hover:-translate-y-2 hover:shadow-2xl hover:border-brand-500/20' : ''}
+        ${hoverable ? 'hover:-translate-y-2 hover:border-brand-500/20' : ''}
         ${className}
       `}
       {...props}
@@ -49,6 +59,28 @@ const Card = ({
       <div className={`absolute top-0 left-0 w-64 h-64 ${currentTheme.bg1} rounded-full blur-[80px] pointer-events-none transition-all duration-1000 group-hover:scale-150 group-hover:opacity-40 -translate-x-1/2 -translate-y-1/2 z-0`}></div>
       <div className={`absolute bottom-0 right-0 w-48 h-48 ${currentTheme.bg2} rounded-full blur-[60px] pointer-events-none transition-all duration-1000 group-hover:scale-150 group-hover:opacity-40 translate-x-1/4 translate-y-1/4 delay-100 z-0`}></div>
       <div className={`absolute top-1/2 left-1/2 w-32 h-32 ${currentTheme.bg3} rounded-full blur-[40px] pointer-events-none transition-all duration-1000 group-hover:scale-150 group-hover:opacity-40 -translate-x-1/2 -translate-y-1/2 delay-300 z-0`}></div>
+
+      {/* Animated Particles Layer */}
+      {showParticles && (
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+          {particles.map((p) => (
+            <div
+              key={p.id}
+              className="absolute rounded-full bg-white animate-particle-float"
+              style={{
+                top: p.top,
+                left: p.left,
+                width: p.size,
+                height: p.size,
+                opacity: 0.4,
+                boxShadow: '0 0 15px rgba(255, 255, 255, 0.4)',
+                '--float-duration': p.duration,
+                '--float-delay': p.delay,
+              }}
+            ></div>
+          ))}
+        </div>
+      )}
 
       <div className="relative z-10 w-full h-full">
         {(title || subtitle || headerAction) && (
@@ -65,7 +97,7 @@ const Card = ({
           </div>
         )}
 
-        <div className={`${noPadding ? '' : compact ? 'px-8 py-6 md:px-12 md:py-8' : 'p-10 md:p-16'} ${bodyClassName}`}>
+        <div className={`${noPadding ? '' : compact ? 'px-4 py-6 md:px-12 md:py-8' : 'p-6 md:p-16'} ${bodyClassName}`}>
           {children}
         </div>
 

@@ -4,8 +4,12 @@ import { Link2, Send, Copy, Check, Sparkles, Zap } from "lucide-react";
 import Button from "../../../components/common/Button";
 import Card from "../../../components/common/Card";
 import { Api, handleApiError } from "../../../components/common/Api/api";
+import { useAuth } from "../../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Urlindex = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const [originUrl, setOriginUrl] = useState({
     originalUrl: "",
   });
@@ -22,6 +26,7 @@ const Urlindex = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    
     if (!originUrl.originalUrl) return;
     
     setLoading(true);
@@ -48,10 +53,10 @@ const Urlindex = () => {
         variant="premium"
         compact
       >
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 animate-reveal">
-           <div className="space-y-1">
-              <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight">Quick Shortener</h3>
-              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Transform long links into trackable assets instantly</p>
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 md:mb-10 animate-reveal">
+           <div className="space-y-1.5 text-center md:text-left">
+              <h3 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white leading-tight tracking-tight">Quick Shortener</h3>
+              <p className="text-[10px] md:text-[11px] font-bold text-slate-500 uppercase tracking-[0.15em] max-w-[280px] md:max-w-none mx-auto md:mx-0 opacity-80">Transform long links into trackable assets</p>
            </div>
            <div className="hidden md:flex p-3 rounded-2xl bg-brand-600 text-white shadow-2xl shadow-brand-600/30 animate-glow">
               <Zap size={20} fill="currentColor" />
@@ -70,7 +75,7 @@ const Urlindex = () => {
                 type="url"
                 onChange={inputHandler}
                 required
-                className="group-hover:border-brand-500/50 transition-all text-base px-6 rounded-xl bg-white dark:bg-slate-900 shadow-sm border-slate-200 dark:border-white/5 h-14"
+                className="group-hover:border-brand-500/50 transition-all text-base px-6 h-14"
               />
             </div>
             <Button 
@@ -79,7 +84,7 @@ const Urlindex = () => {
                 type="submit" 
                 loading={loading}
                 size="lg"
-                className="w-full md:w-48 shadow-lg shadow-brand-600/10 !rounded-xl font-extrabold hover:scale-105 active:scale-95 transition-all h-14"
+                className="w-full md:w-48 !rounded-xl font-extrabold hover:scale-105 active:scale-95 transition-all h-14"
             >
               Shorten
             </Button>
@@ -88,7 +93,7 @@ const Urlindex = () => {
 
         {shortUrl && (
           <div className="mt-8 pt-8 border-t border-slate-100 dark:border-white/5 space-y-4 animate-reveal delay-100 font-sans">
-            <div className="flex flex-col sm:flex-row items-center justify-between p-5 bg-slate-50 dark:bg-slate-950/30 rounded-2xl border border-slate-200 dark:border-white/5 group shadow-sm hover:border-brand-500/20 transition-all duration-500">
+            <div className="flex flex-col sm:flex-row items-center justify-between p-5 bg-slate-50 dark:bg-slate-950/30 rounded-2xl border border-slate-200 dark:border-white/5 group transition-all duration-500">
               <div className="flex items-center gap-4 overflow-hidden w-full">
                 <div className="p-2.5 rounded-lg bg-white dark:bg-slate-900 text-brand-600 shadow-sm transition-transform group-hover:scale-110 group-hover:rotate-6">
                   <Check size={18} strokeWidth={3} />

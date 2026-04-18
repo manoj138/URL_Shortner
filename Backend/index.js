@@ -11,8 +11,10 @@ const {connectMongoDB} = require("./src/config/mongoDB");
 connectMongoDB()
 
 const UrlRoutes  = require('./src/routes/UrlRoutes');
+const AuthRoutes = require('./src/routes/AuthRoutes');
 const UrlController = require('./src/controllers/UrlController');
 
+app.use("/api/auth", AuthRoutes);
 app.use("/api/url", UrlRoutes);
 app.get("/:shortCode", UrlController.redirectUrl);
 
