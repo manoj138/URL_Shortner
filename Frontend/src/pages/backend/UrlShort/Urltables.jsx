@@ -171,10 +171,17 @@ const Urltables = () => {
 
       {/* Stats Quick View */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-sans">
-        {statItems.map((item, idx) => (
-          <div 
+        {[
+          { label: 'Total Links', value: stats.totalLinks, icon: Link2, color: 'text-brand-600', bg: 'bg-brand-50 dark:bg-brand-900/40', theme: 'brand' },
+          { label: 'Total Clicks', value: stats.totalClicks, icon: MousePointer2, color: 'text-indigo-600', bg: 'bg-indigo-50 dark:bg-indigo-900/40', theme: 'indigo' },
+          { label: 'Performance', value: `${stats.avgClicks}%`, icon: TrendingUp, color: 'text-emerald-600', bg: 'bg-emerald-50 dark:bg-emerald-900/40', theme: 'emerald' },
+          { label: 'Global Nodes', value: stats.activeLinks, icon: Globe, color: 'text-slate-600', bg: 'bg-slate-50 dark:bg-slate-900/40', theme: 'amber' },
+        ].map((item, idx) => (
+          <Card 
             key={item.label} 
-            className={`card-premium !p-5 group hover:border-brand-500/30 animate-reveal delay-${(idx+1)*100}`} 
+            bubbleTheme={item.theme}
+            compact
+            className={`!p-5 hover:border-brand-500/30 animate-reveal delay-${(idx+1)*100}`} 
           >
             <div className="flex flex-col gap-4">
               <div className={`p-2.5 rounded-xl ${item.bg} ${item.color} w-fit shadow-xs group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
@@ -187,7 +194,7 @@ const Urltables = () => {
                 </h3>
               </div>
             </div>
-          </div>
+          </Card>
         ))}
       </div>
 

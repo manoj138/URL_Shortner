@@ -95,7 +95,12 @@ const Dashboard = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 font-sans">
           {features.map((feature, i) => (
-            <div key={i} className={`space-y-6 group animate-reveal delay-${(i+1)*100}`}>
+            <Card 
+              key={i} 
+              bubbleTheme={['sky', 'violet', 'teal', 'fuchsia'][i % 4]}
+              className={`space-y-6 group animate-reveal delay-${(i+1)*100}`}
+              hoverable
+            >
                <div className={`w-16 h-16 rounded-[1.5rem] ${feature.bg} ${feature.color} flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 relative overflow-hidden`}>
                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700"></div>
                  <feature.icon size={30} className="relative z-10" />
@@ -106,7 +111,7 @@ const Dashboard = () => {
                     {feature.desc}
                   </p>
                </div>
-            </div>
+            </Card>
           ))}
         </div>
       </section>
@@ -194,46 +199,53 @@ const Dashboard = () => {
 
         <div className="space-y-6 font-sans">
           {faqs.map((faq, idx) => (
-            <div key={idx} className={`border border-slate-200 dark:border-white/5 rounded-3xl overflow-hidden hover:border-brand-500/30 transition-all duration-500 shadow-sm animate-reveal delay-${idx*100}`}>
+            <Card 
+              key={idx} 
+              bubbleTheme={['indigo', 'brand', 'teal', 'violet'][idx % 4]}
+              className={`overflow-hidden hover:border-brand-500/30 transition-all duration-500 shadow-sm animate-reveal delay-${idx*100}`}
+              noPadding
+            >
               <button 
                 onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                className="w-full px-10 py-7 flex items-center justify-between text-left group bg-white dark:bg-slate-950/60"
+                className="w-full px-10 py-7 flex items-center justify-between text-left group bg-white/50 dark:bg-slate-950/40"
               >
                 <span className="text-lg font-semibold text-slate-800 dark:text-slate-200 group-hover:text-brand-500 transition-colors">{faq.q}</span>
                 <ChevronDown size={20} className={`text-slate-400 transition-transform duration-700 ${openFaq === idx ? 'rotate-180 text-brand-500' : ''}`} />
               </button>
               {openFaq === idx && (
-                <div className="px-10 pb-8 animate-reveal bg-white dark:bg-slate-950/60 border-t border-slate-50 dark:border-white/5">
+                <div className="px-10 pb-8 animate-reveal bg-white/30 dark:bg-slate-950/20 border-t border-slate-50 dark:border-white/5">
                   <p className="pt-6 text-base text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
                     {faq.a}
                   </p>
                 </div>
               )}
-            </div>
+            </Card>
           ))}
         </div>
       </section>
 
-      {/* CTA Section - Seamless Mesh Integration */}
+      {/* CTA Section - Professional Card Integration */}
       <section className="section-container">
-         <div className="relative overflow-hidden bg-slate-900/40 dark:bg-slate-950/20 backdrop-blur-3xl rounded-[4rem] p-20 md:p-32 text-center animate-reveal border border-slate-200/50 dark:border-white/5">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-600/10 blur-[150px] rounded-full animate-mesh"></div>
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-400/10 blur-[120px] rounded-full animate-mesh" style={{ animationDelay: '-5s' }}></div>
-            
+         <Card 
+            bubbleTheme="sky"
+            className="!rounded-[4rem] animate-reveal border-slate-200/50 dark:border-white/5 overflow-hidden"
+            bodyClassName="p-20 md:p-32 text-center"
+            noPadding
+         >
             <div className="relative z-10 space-y-12 max-w-3xl mx-auto font-sans">
-               <h2 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.1] animate-reveal delay-100">Build trackable links in seconds, not days.</h2>
+               <h2 className="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.1] animate-reveal delay-100 italic">Build trackable links in <br/>seconds, not days.</h2>
                <div className="flex flex-col sm:flex-row items-center justify-center gap-8 animate-reveal delay-200">
                   <Link to="/links" className="w-full sm:w-auto">
-                    <Button size="lg" className="w-full px-16 py-8 text-lg font-extrabold bg-white text-slate-950 hover:bg-slate-100 rounded-2xl shadow-2xl hover:scale-105 active:scale-95 transition-all">
+                    <Button size="lg" className="w-full px-16 py-8 text-lg font-extrabold bg-brand-600 text-white hover:bg-brand-700 rounded-2xl shadow-2xl hover:scale-105 active:scale-95 transition-all">
                        Start for Free
                     </Button>
                   </Link>
-                  <Button variant="secondary" size="lg" className="w-full sm:w-auto px-12 py-8 text-lg text-white/70 hover:text-white rounded-2xl hover:bg-white/5">
+                  <Button variant="secondary" size="lg" className="w-full sm:w-auto px-12 py-8 text-lg text-slate-500 dark:text-white/70 hover:text-slate-900 dark:hover:text-white rounded-2xl hover:bg-slate-100 dark:hover:bg-white/5 border border-slate-200 dark:border-white/10">
                      Contact Sales
                   </Button>
                </div>
             </div>
-         </div>
+         </Card>
       </section>
     </div>
   );

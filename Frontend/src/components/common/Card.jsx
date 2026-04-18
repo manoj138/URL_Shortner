@@ -22,6 +22,10 @@ const Card = ({
     rose: { bg1: 'bg-rose-500/10', bg2: 'bg-pink-500/10', bg3: 'bg-orange-400/5' },
     amber: { bg1: 'bg-amber-500/10', bg2: 'bg-orange-500/10', bg3: 'bg-yellow-400/5' },
     emerald: { bg1: 'bg-emerald-500/10', bg2: 'bg-teal-500/10', bg3: 'bg-green-400/5' },
+    violet: { bg1: 'bg-violet-500/10', bg2: 'bg-purple-500/10', bg3: 'bg-fuchsia-400/5' },
+    fuchsia: { bg1: 'bg-fuchsia-500/10', bg2: 'bg-pink-500/10', bg3: 'bg-rose-400/5' },
+    sky: { bg1: 'bg-sky-500/10', bg2: 'bg-indigo-500/10', bg3: 'bg-blue-400/5' },
+    teal: { bg1: 'bg-teal-500/10', bg2: 'bg-emerald-500/10', bg3: 'bg-cyan-400/5' },
   };
 
   const currentTheme = bubbleThemes[bubbleTheme] || bubbleThemes.brand;
