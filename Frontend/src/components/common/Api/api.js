@@ -1,7 +1,7 @@
 import axios from "axios"
 
 // ✅ Backend base URLs
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://url-shortner-backend-sigma-ashen.vercel.app";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://url-shortner-ph05.onrender.com";
 
 
 const Api = axios.create({

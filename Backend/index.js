@@ -23,10 +23,8 @@ app.get('/', (req, res) => {
 });
 
 
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
-  });
-}
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
 
 module.exports = app;
