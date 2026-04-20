@@ -1,7 +1,7 @@
 import axios from "axios"
 
 // ✅ Backend base URLs
-const BASE_URL = "http://localhost:4000";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://url-shortner-backend-sigma-ashen.vercel.app";
 
 
 const Api = axios.create({

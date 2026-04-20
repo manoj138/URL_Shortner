@@ -2,6 +2,7 @@
 const { handle400, formatMongoError, handle404 } = require("../helper/mongoErrorHandler");
 const { handle201, handle200 } = require("../helper/successHandler");
 const Url = require("../models/UrlModel");
+const User = require("../models/UserModel");
 const { nanoid } = require("nanoid");
 
 const createShortUrl = async (req, res) => {
