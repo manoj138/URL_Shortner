@@ -7,7 +7,7 @@ import { Api, handleApiError } from "../../../components/common/Api/api";
 import { useAuth } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-const Urlindex = () => {
+const Urlindex = ({ onSuccess }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [originUrl, setOriginUrl] = useState({
@@ -34,6 +34,10 @@ const Urlindex = () => {
       const res = await Api.post("/url/shorten", originUrl);
       setShortUrl(res.data.data);
       setCopied(false);
+      // Trigger refresh if callback provided
+      if (onSuccess) {
+        onSuccess();
+      }
     } catch (error) {
       handleApiError(error);
     } finally {

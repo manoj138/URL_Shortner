@@ -10,18 +10,20 @@ const Dashboard = () => {
   const [openFaq, setOpenFaq] = useState(null);
   const [stats, setStats] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+
+  const fetchStats = async () => {
+    try {
+      const res = await Api.get('/url/stats');
+      setStats(res.data.data);
+    } catch (error) {
+      console.error("Failed to fetch stats:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        const res = await Api.get('/url/stats');
-        setStats(res.data.data);
-      } catch (error) {
-        console.error("Failed to fetch stats:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
     fetchStats();
   }, []);
 
@@ -69,7 +71,7 @@ const Dashboard = () => {
 
           {/* Core Action Tool */}
           <div className="w-full max-w-7xl mx-auto px-4 relative group animate-reveal delay-300">
-            <Urlindex />
+            <Urlindex onSuccess={fetchStats} />
           </div>
 
           {/* Social Proof Elements */}

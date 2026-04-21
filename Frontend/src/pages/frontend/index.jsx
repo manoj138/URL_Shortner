@@ -35,11 +35,28 @@ const LandingPage = () => {
     { q: "Is the analytics tracking real-time?", a: "Absolutely. Click data is processed and reflected in your analytics dashboard within milliseconds." },
   ];
 
+  const [publicStats, setPublicStats] = useState({ totalUrls: 0, totalUsers: 0 });
+  const [loadingStats, setLoadingStats] = useState(true);
+
+  useEffect(() => {
+    const fetchPublicStats = async () => {
+      try {
+        const res = await Api.get('/url/public-stats');
+        setPublicStats(res.data.data);
+      } catch (error) {
+        console.error("Failed to fetch public stats:", error);
+      } finally {
+        setLoadingStats(false);
+      }
+    };
+    fetchPublicStats();
+  }, []);
+
   const stats = [
-    { label: "Active Nodes", value: "142", icon: Globe, suffix: "Global", theme: "brand" },
-    { label: "Daily Redirects", value: "24M+", icon: Zap, suffix: "+12%", theme: "indigo" },
+    { label: "Active Nodes", value: publicStats.totalUrls, icon: Globe, suffix: "Global", theme: "brand" },
+    { label: "Total Users", value: publicStats.totalUsers, icon: Zap, suffix: "Live", theme: "indigo" },
     { label: "Average Latency", value: "<45ms", icon: Rocket, suffix: "Edge", theme: "emerald" },
-    { label: "Uptime SLA", value: "99.99%", icon: Shield, suffix: "Guaranteed", theme: "amber" },
+    { label: "Uptime SLA", value: "99.9%", icon: Shield, suffix: "Live", theme: "amber" },
   ];
 
   const iconMap = { Globe, Zap, Rocket, Shield };
@@ -72,9 +89,9 @@ const LandingPage = () => {
                   {[1,2,3,4].map(i => (
                     <div key={i} className="w-10 h-10 rounded-full border-4 border-white dark:border-slate-950 bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-[10px] font-black">U{i}</div>
                   ))}
-                  <div className="w-10 h-10 rounded-full border-4 border-white dark:border-slate-950 bg-brand-600 text-white flex items-center justify-center text-[10px] font-black shadow-lg shadow-brand-600/20">+{stats.totalUsers}</div>
+                  <div className="w-10 h-10 rounded-full border-4 border-white dark:border-slate-950 bg-brand-600 text-white flex items-center justify-center text-[10px] font-black shadow-lg shadow-brand-600/20">+{publicStats.totalUsers}</div>
                </div>
-               <p className="text-xs font-bold text-slate-500">Joined by <span className="text-slate-900 dark:text-white">{stats.totalUsers}+ active users</span> • Over <span className="text-brand-600">{stats.totalUrls}+ links</span> shortened</p>
+               <p className="text-xs font-bold text-slate-500">Joined by <span className="text-slate-900 dark:text-white">{publicStats.totalUsers}+ active users</span> • Over <span className="text-brand-600">{publicStats.totalUrls}+ links</span> shortened</p>
             </div>
 
             {!user && (
