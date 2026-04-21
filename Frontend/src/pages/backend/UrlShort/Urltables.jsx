@@ -204,11 +204,6 @@ const Urltables = () => {
         className="overflow-visible !rounded-[3rem] animate-reveal delay-400"
         title="URL Repository" 
         subtitle="Manage your generated short URLs and monitor engagement metrics in real-time."
-        headerAction={
-          <div className="flex gap-4">
-             <Button variant="glass" size="md" icon={TrendingUp} className="rounded-2xl font-black hover:scale-105 transition-all">Export Stats</Button>
-          </div>
-        }
       >
         {urls.length > 0 ? (
           <div className="px-2">
