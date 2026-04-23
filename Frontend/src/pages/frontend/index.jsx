@@ -12,6 +12,22 @@ const LandingPage = () => {
   const [openFaq, setOpenFaq] = useState(null);
   const { user, loading } = useAuth();
   const navigate = useNavigate();
+  const [publicStats, setPublicStats] = useState({ totalUrls: 0, totalUsers: 0 });
+  const [loadingStats, setLoadingStats] = useState(true);
+
+  useEffect(() => {
+    const fetchPublicStats = async () => {
+      try {
+        const res = await Api.get('/url/public-stats');
+        setPublicStats(res.data.data);
+      } catch (error) {
+        console.error("Failed to fetch public stats:", error);
+      } finally {
+        setLoadingStats(false);
+      }
+    };
+    fetchPublicStats();
+  }, []);
 
   useEffect(() => {
     if (!loading && user) {
@@ -34,23 +50,6 @@ const LandingPage = () => {
     { q: "Do short links have an expiration date?", a: "By default, links remain active indefinitely. You can manually delete or manage them from your dashboard repo." },
     { q: "Is the analytics tracking real-time?", a: "Absolutely. Click data is processed and reflected in your analytics dashboard within milliseconds." },
   ];
-
-  const [publicStats, setPublicStats] = useState({ totalUrls: 0, totalUsers: 0 });
-  const [loadingStats, setLoadingStats] = useState(true);
-
-  useEffect(() => {
-    const fetchPublicStats = async () => {
-      try {
-        const res = await Api.get('/url/public-stats');
-        setPublicStats(res.data.data);
-      } catch (error) {
-        console.error("Failed to fetch public stats:", error);
-      } finally {
-        setLoadingStats(false);
-      }
-    };
-    fetchPublicStats();
-  }, []);
 
   const stats = [
     { label: "Active Nodes", value: publicStats.totalUrls, icon: Globe, suffix: "Global", theme: "brand" },
