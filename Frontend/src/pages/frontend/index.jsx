@@ -142,18 +142,18 @@ const LandingPage = () => {
               <Card 
                 key={i} 
                 bubbleTheme={stat.theme}
-                className={`hover:border-brand-500/30 font-sans animate-reveal delay-${(i+1)*100}`}
+                className={`hover:border-brand-500/30 font-sans animate-reveal delay-${(i+1)*100} !p-3`}
                 compact
               >
-                 <div className="flex items-center gap-4">
-                    <div className="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-500 group-hover:bg-brand-600 group-hover:text-white group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 shrink-0">
-                      <IconComponent size={20} strokeWidth={2.5} />
+                 <div className="flex items-center gap-3">
+                    <div className="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-500 group-hover:bg-brand-600 group-hover:text-white group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 shrink-0">
+                      <IconComponent size={16} strokeWidth={2.5} />
                     </div>
-                    <div className="space-y-0.5 flex-1">
-                       <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-none mb-1">{stat.label}</p>
+                    <div className="space-y-0 flex-1">
+                       <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest leading-none mb-1">{stat.label}</p>
                        <div className="flex items-center justify-between gap-2">
-                          <h3 className="text-xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-none">{stat.value}</h3>
-                          <span className="text-[9px] font-bold text-brand-500 bg-brand-50 dark:bg-brand-500/10 px-1.5 py-0.5 rounded-full">
+                          <h3 className="text-lg font-extrabold text-slate-900 dark:text-white tracking-tight leading-none">{stat.value}</h3>
+                          <span className="text-[8px] font-bold text-brand-500 bg-brand-50 dark:bg-brand-500/10 px-1 py-0.5 rounded-full">
                             {stat.suffix}
                           </span>
                        </div>

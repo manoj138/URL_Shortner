@@ -181,15 +181,15 @@ const Urltables = () => {
             key={item.label} 
             bubbleTheme={item.theme}
             compact
-            className={`!p-4 hover:border-brand-500/30 animate-reveal delay-${(idx+1)*100}`} 
+            className={`!p-3 hover:border-brand-500/30 animate-reveal delay-${(idx+1)*100}`} 
           >
-            <div className="flex items-center gap-4">
-              <div className={`p-2 rounded-xl ${item.bg} ${item.color} shadow-xs group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
-                <item.icon size={18} strokeWidth={2.5} />
+            <div className="flex items-center gap-3">
+              <div className={`p-1.5 rounded-lg ${item.bg} ${item.color} shadow-xs group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
+                <item.icon size={16} strokeWidth={2.5} />
               </div>
-              <div className="space-y-0.5">
-                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-none mb-1">{item.label}</p>
-                <h3 className="text-xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-none">
+              <div className="space-y-0">
+                <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest leading-none mb-1">{item.label}</p>
+                <h3 className="text-lg font-extrabold text-slate-900 dark:text-white tracking-tight leading-none">
                   {item.value}
                 </h3>
               </div>
