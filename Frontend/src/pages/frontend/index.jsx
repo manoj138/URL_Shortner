@@ -145,17 +145,19 @@ const LandingPage = () => {
                 className={`hover:border-brand-500/30 font-sans animate-reveal delay-${(i+1)*100}`}
                 compact
               >
-                 <div className="flex justify-between items-start mb-4">
-                    <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-500 group-hover:bg-brand-600 group-hover:text-white group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
-                      <IconComponent size={22} strokeWidth={2.5} />
+                 <div className="flex items-center gap-4">
+                    <div className="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-500 group-hover:bg-brand-600 group-hover:text-white group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 shrink-0">
+                      <IconComponent size={20} strokeWidth={2.5} />
                     </div>
-                    <span className="text-[10px] font-bold text-brand-500 bg-brand-50 dark:bg-brand-500/10 px-2 py-0.5 rounded-full animate-pulse">
-                      {stat.suffix}
-                    </span>
-                 </div>
-                 <div className="space-y-0.5">
-                    <h3 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">{stat.value}</h3>
-                    <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">{stat.label}</p>
+                    <div className="space-y-0.5 flex-1">
+                       <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-none mb-1">{stat.label}</p>
+                       <div className="flex items-center justify-between gap-2">
+                          <h3 className="text-xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-none">{stat.value}</h3>
+                          <span className="text-[9px] font-bold text-brand-500 bg-brand-50 dark:bg-brand-500/10 px-1.5 py-0.5 rounded-full">
+                            {stat.suffix}
+                          </span>
+                       </div>
+                    </div>
                  </div>
               </Card>
             );
